@@ -7,11 +7,11 @@ const App = () => {
         <Router> 
             <Navbar />
             <Routes> 
-                <Route path ="/" element = {'Home'} />
-                <Route path ="/about" element = {'About' } /> 
-                <Route path ="/projects" element = {'Projects' } /> 
-                <Route path ="/blog" element = {'Blog' } /> 
-                <Route path ="/contact" element = {'Contact' } /> 
+                <Route path ="/" element = {<Home />} />
+                <Route path ="/about" element = {<About /> } /> 
+                <Route path ="/projects" element = {<Projects />} /> 
+                <Route path ="/blog" element = {<Blog />} /> 
+                <Route path ="/contact" element = {<Contact />} /> 
             </Routes>
         </Router>
     </main>
