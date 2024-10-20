@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className = "header">
+<header className = "header">
         <NavLink to= "/" className = "w-10 h-10 rounded-lg bg-white items-center justify-center flex fond-bold shadow-md"> 
             <p className = "blue-gradient_text"> CS </p>
         </NavLink> 
@@ -27,7 +27,7 @@ const Navbar = () => {
             </NavLink>
         </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
