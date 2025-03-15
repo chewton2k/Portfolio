@@ -1,5 +1,21 @@
 # Charlton Shih's Portfolio 
 
+This is the code for Charlton Shih's portfolio. Hosted by GitHub. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Setup
+
+```bash 
+git clone https://github.com/chewton2k/Portfolio
+cd Portfolio 
+```
+
+# Installing Dependencies 
+
+```bash
+npm install 
+```
+
+```bash
+# To run the project on http://localhost:5173/
+npm run dev 
+```
