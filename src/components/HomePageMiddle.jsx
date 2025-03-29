@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 const HomePageMiddle = () => {
   return (
     <div>
-      <Navbar />
     </div>
   );
 };
