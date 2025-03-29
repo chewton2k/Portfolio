@@ -40,7 +40,7 @@ const Navbar = () => {
            className="text-l font-light hover:opacity-50">
           <LinkedInButton />
         </a>
-        <Link to="/email" className="text-l font-light hover:scale-125 duration-200 hover:opacity-50">
+        <Link to="mailto:charltonshih645@g.ucla.edu" className="text-l font-light hover:scale-125 duration-200 hover:opacity-50">
           <EmailButton />
         </Link>
       </div>

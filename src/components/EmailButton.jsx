@@ -10,10 +10,10 @@ const EmailButton = () => {
         viewBox="0 0 24 24"
         fill="none"
         stroke="black"
-        strokeWidth="1" 
+        strokeWidth="1.5" 
         strokeLinecap="round"
         strokeLinejoin="round"  
-        className="w-5 h-5"
+        className="w-10 h-10 hover:stroke-blue-500"
       >
         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
         <path
