@@ -3,7 +3,7 @@ import React from 'react';
 const GithubButton = () => {
   return (
     <div>
-        <div class="group relative">
+    <div className="group flex justify-center p-2 rounded-md drop-shadow-xl text-black font-semibold transition-all hover:scale-125 duration-200">
   <button>
   <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" 
   class="w-8 hover:scale-125 duration-200 hover:stroke-blue-500">
