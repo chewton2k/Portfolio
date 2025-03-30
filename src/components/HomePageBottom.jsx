@@ -4,7 +4,7 @@ import GithubButton from './GithubButton';
 import LinkedInButton from './LinkedInButton';
 import EmailButton from './EmailButton';
 
-const HomepageBottom = () => {
+const HomePageBottom = () => {
   return (
     <footer className="w-full text-black py-6 mt-auto">
   <div className="w-full h-px bg-black"></div>
@@ -24,14 +24,14 @@ const HomepageBottom = () => {
       </a>
     </div>
     
-    {/* Quick Links Section */}
+    {/* Quick Links Section
     <div className="flex space-x-8 mb-6">
       <Link to="/" className="text-black hover:opacity-50">Home</Link>
       <Link to="/about" className="text-black hover:opacity-50">About</Link>
       <Link to="/projects" className="text-black hover:opacity-50">Projects</Link>
       <Link to="/experience" className="text-black hover:opacity-50">Experience</Link>
       <Link to="/blog" className="text-black hover:opacity-50">Blog</Link>
-    </div>
+    </div> */}
 
     {/* Copyright Section */}
     <div className="text-center text-sm">
@@ -43,4 +43,4 @@ const HomepageBottom = () => {
   );
 };
 
-export default HomepageBottom;
+export default HomePageBottom;

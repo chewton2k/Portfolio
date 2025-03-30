@@ -4,7 +4,10 @@
   --breakpoint-3xl: 120rem;
 }
 
-/* From Uiverse.io by Nawsome */ 
+html {
+  scroll-behavior: smooth;
+}
+
 .boxes {
   --size: 32px;
   --duration: 800ms;

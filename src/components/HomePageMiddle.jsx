@@ -84,9 +84,7 @@ const HomePageMiddle = () => {
       window.removeEventListener('resize', detectTextElements);
       clearTimeout(timeoutId);
     };
-  }, []);
-
-  // Handle page visibility changes
+  }, []); 
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden' && isDragging) {
@@ -365,7 +363,10 @@ const HomePageMiddle = () => {
   }, [isDragging, draggedBallIndex, offset, textObstacles]);
 
   return (
-    <div className="relative w-full min-h-[60vh] bg-white" ref={containerRef}>
+    <div 
+  className="relative flex flex-col justify-center w-full min-h-[60vh] shadow-xl backdrop-brightness-90 bg-cover bg-center"
+  ref={containerRef}
+>
       {balls.map((ball, index) => (
         <div
           key={ball.id}
@@ -390,7 +391,7 @@ const HomePageMiddle = () => {
         </div>
       ))}
       
-      <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center z-10 py-60 relative pointer-events-none">
+      <div className="container mx-auto px-4 h-full justify-cente flex flex-col items-center z-10 relative pointer-events-none">
         <h1 
           ref={headingRef}
           className="text-4xl md:text-6xl font-bold mb-6 text-center text-black drop-shadow-xl select-none"

@@ -1,48 +1,93 @@
+// Updated Navbar.jsx with more direct scrolling implementation
 import React from 'react';
-import { Link } from 'react-router-dom'; 
 import GithubButton from './GithubButton';
 import LinkedInButton from './LinkedInButton';
 import EmailButton from './EmailButton';
 
 const Navbar = () => {
-  return (
-    <nav className="flex flex-wrap justify-between items-center text-black py-3 px-5 shadow-xl w-full border-1">
-      {/* Left links */}
-      <div className="flex flex-wrap items-center space-x-4 md:space-x-10">
-        <Link to="/" className="text-l font-light hover:scale-105 duration-200 hover:opacity-50">
-          Home
-        </Link>
-        <Link to="/about" className="text-l font-light hover:scale-105 duration-200 hover:opacity-50">
-          About
-        </Link>
-        <Link to="/projects" className="text-l font-light hover:scale-105 duration-200 hover:opacity-50">
-          Projects
-        </Link>
-        <Link to="/experience" className="text-l font-light hover:scale-105 duration-200 hover:opacity-50">
-          Experience
-        </Link>
-        <Link to="/pictures" className="text-l font-light hover:scale-105 duration-200 hover:opacity-50">
-          Pictures
-        </Link>
-      </div>
+  const scrollToSection = (id) => {
+    return (e) => {
+      e.preventDefault();
       
-      {/* Right buttons */}
-      <div className="flex flex-wrap items-center space-x-4 md:space-x-10">
+      // Find the element by ID
+      const element = document.getElementById(id);
+      
+      if (element) {
+        console.log(`Scrolling to element with id: ${id}`);
+        
+        // Get the element's position
+        const yOffset = -20; // Small offset to account for any headers
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        
+        // Scroll directly to that position
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth'
+        });
+      } else {
+        console.error(`Element with id ${id} not found`);
+      }
+    };
+  };
+
+  return (
+    <nav className="fixed left-0 top-0 h-screen w-40 bg-white shadow-xl border-r border-gray-300 flex flex-col items-center py-5 space-y-6 z-50">
+      {/* Navigation Links */}
+      <div className="flex flex-col justify-items-center space-y-6">
+        <a 
+          href="#home" 
+          onClick={scrollToSection('home')} 
+          className="text-sm font-light hover:scale-110 duration-200 hover:opacity-50 cursor-pointer"
+        >
+          Home
+        </a>
+        <a 
+          href="#about" 
+          onClick={scrollToSection('about')} 
+          className="text-sm font-light hover:scale-110 duration-200 hover:opacity-50 cursor-pointer"
+        >
+          About
+        </a>
+        <a 
+          href="#projects" 
+          onClick={scrollToSection('projects')} 
+          className="text-sm font-light hover:scale-110 duration-200 hover:opacity-50 cursor-pointer"
+        >
+          Projects
+        </a>
+        <a 
+          href="#experience" 
+          onClick={scrollToSection('experience')} 
+          className="text-sm font-light hover:scale-110 duration-200 hover:opacity-50 cursor-pointer"
+        >
+          Experience
+        </a>
+        <a 
+          href="#pictures" 
+          onClick={scrollToSection('pictures')} 
+          className="text-sm font-light hover:scale-110 duration-200 hover:opacity-50 cursor-pointer"
+        >
+          Pictures
+        </a>
+      </div>
+
+      {/* Social Buttons */}
+      <div className="flex flex-col space-y-6 mt-auto pb-6">
         <a href="https://github.com/chewton2k" 
            target="_blank" 
            rel="noopener noreferrer" 
-           className="text-l font-light hover:opacity-50">
+           className="hover:opacity-50">
           <GithubButton />
         </a>
         <a href="https://www.linkedin.com/in/charlton-shih" 
            target="_blank" 
            rel="noopener noreferrer" 
-           className="text-l font-light hover:opacity-50">
+           className="hover:opacity-50">
           <LinkedInButton />
         </a>
-        <Link to="mailto:charltonshih645@g.ucla.edu" className="text-l font-light hover:scale-125 duration-200 hover:opacity-50">
+        <a href="mailto:charltonshih645@g.ucla.edu" className="hover:scale-125 duration-200 hover:opacity-50">
           <EmailButton />
-        </Link>
+        </a>
       </div>
     </nav>
   );

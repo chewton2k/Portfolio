@@ -1,10 +1,15 @@
 import React from "react";
-import HomePageTop from "../components/HomePageTop";
+import HomePageBottom from "../components/HomePageBottom";
 
 const PicturePage = () => {
   return (
     <div>
-        <HomePageTop/>
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          Pictures
+        </main>
+      </div>
+      <HomePageBottom />
     </div>
   );
 };

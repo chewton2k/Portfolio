@@ -1,10 +1,10 @@
 import React from "react";
-import HomePageTop from "../components/HomePageTop";
+
 
 const ExperiencePage = () => {
   return (
     <div>
-        <HomePageTop/>
+        Experience
     </div>
   );
 };
