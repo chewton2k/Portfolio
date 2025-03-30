@@ -4,12 +4,14 @@
   --breakpoint-3xl: 120rem;
 }
 
+/* default html behavior  */
 html {
   scroll-behavior: smooth;
   background-color: black;
   color:white, 
 }
 
+/* Loading blocks */
 .boxes {
   --size: 32px;
   --duration: 800ms;
@@ -198,6 +200,7 @@ html, body {
   min-height: 100%;
 }
 
+/* inifinite loop description, switch description*/
 
 .loader {
   color: rgb(124, 124, 124);
@@ -281,13 +284,16 @@ html, body {
   }
 }
 
+
+/* Transition betweeen load and page */
 .transition-opacity {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
+/* Top left button */
 .Btn {
-  border: 0px solid white;
+  border: 1px solid white;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -298,6 +304,8 @@ html, body {
   cursor: pointer;
   position: relative;
   background: #000000;
+  overflow: hidden; 
+  padding: 0 10px;
 }
 
 .svgIcon {
@@ -310,25 +318,93 @@ html, body {
 
 .text {
   position: absolute;
+  left: 5px;
+  white-space: nowrap; 
   color: rgb(255, 255, 255);
-  width: 150px;
-  font-weight: 600;
+  font-weight: 400;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.4s, left 0.4s;
 }
 
 .Btn:hover {
-  width: 130px;
-  transition: all 0.4s ease;
-  border-radius: 40px;
+  width: 190px;
+  border-radius: 30px;
+  justify-content: flex-start; 
+  padding-left: 5px; 
 }
 
 .Btn:hover .text {
   opacity: 1;
-  transition: opacity 0.4s;
+  left: 20px;
 }
 
 .Btn:hover .svgIcon {
   opacity: 0;
-  transition: opacity 0.3s;
 }
+
+
+
+/* Card pictures */
+
+.card {
+  position: relative;
+  width: 200px;
+  height: 300x;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px #ffffff80;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card svg {
+  width: 48px;
+  fill: #333;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+}
+
+.card__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .card__content {
+  transform: rotateX(0deg);
+}
+
+.card__title {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+  font-weight: 700;
+}
+
+.card:hover svg {
+  scale: 0;
+}
+
+.card__description {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+}
+

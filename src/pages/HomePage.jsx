@@ -3,14 +3,12 @@ import HomePageMiddle from '../components/HomePageMiddle';
 
 const HomePage = () => {
   return (
-    <div>
-      <div className="flex flex-col min-h-screen">
-        <main className="flex-grow">
-          <HomePageMiddle />
-        </main>
+<section className="mt-auto md:px-24 md:ml-16">
+      <div className="max-w-7xl" style={{ opacity: 1, transform: "none" }}>
+        <HomePageMiddle/>
       </div>
-    </div>
-  );
+    </section>
+  );  
 };
 
 export default HomePage;
