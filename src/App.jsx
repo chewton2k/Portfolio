@@ -14,7 +14,7 @@ function App() {
     const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
-        const minLoadTime = 1500; 
+        const minLoadTime = 1200; 
         const fadeDuration = 500; 
         const loadStartTime = Date.now();
 

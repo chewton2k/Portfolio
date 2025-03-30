@@ -282,3 +282,51 @@ html, body {
 .transition-opacity {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
+.Btn {
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  background: #333333;
+}
+
+.svgIcon {
+  transition: opacity 0.3s;
+}
+
+.svgIcon text {
+  fill: white;
+}
+
+.text {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  width: 150px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.Btn:hover {
+  width: 130px;
+  transition: all 0.4s ease;
+  border-radius: 40px;
+}
+
+.Btn:hover .text {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.Btn:hover .svgIcon {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
