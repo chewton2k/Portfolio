@@ -6,6 +6,8 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: black;
+  color:white, 
 }
 
 .boxes {
@@ -285,7 +287,7 @@ html, body {
 
 
 .Btn {
-  border: 1px solid white;
+  border: 0px solid white;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -295,7 +297,7 @@ html, body {
   transition: all 0.4s ease;
   cursor: pointer;
   position: relative;
-  background: #333333;
+  background: #000000;
 }
 
 .svgIcon {

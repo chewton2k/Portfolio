@@ -9,7 +9,6 @@ return (
       <span class="word">Researcher</span>
       <span class="word">AI</span>
       <span class="word">Software</span>
-      <span class="word">Engineer</span>
     </div>
   </div>
 </div>

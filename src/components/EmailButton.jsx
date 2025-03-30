@@ -2,14 +2,14 @@ import React from 'react';
 
 const EmailButton = () => { 
   return (
-    <div className="group flex justify-center p-2 rounded-md drop-shadow-xl text-black font-semibold transition-all hover:scale-125 duration-200">
+    <div className="group flex justify-center p-2 rounded-md drop-shadow-xl text-white font-semibold transition-all hover:scale-125 duration-200">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="40"
         height="40"
         viewBox="0 0 24 24"
         fill="none"
-        stroke="black"
+        stroke="white"
         strokeWidth="1.5" 
         strokeLinecap="round"
         strokeLinejoin="round"  

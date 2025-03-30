@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import SwitchDescription from './SwitchDescription';
 
 const HomePageMiddle = () => {
-  const NUM_BALLS = 7;
-  const BALL_SIZE = 80;
+  const NUM_BALLS = 3;
+  const BALL_SIZE = 60;
   const BALL_RADIUS = BALL_SIZE / 2;
   
   const [balls, setBalls] = useState([]);
@@ -394,7 +394,7 @@ const HomePageMiddle = () => {
       <div className="container mx-auto px-4 h-full justify-cente flex flex-col items-center z-10 relative pointer-events-none">
         <h1 
           ref={headingRef}
-          className="text-4xl md:text-6xl font-bold mb-6 text-center text-black drop-shadow-xl select-none"
+          className="text-4xl md:text-6xl font-mono font-medium mb-6 text-center text-white select-none"
         >
           Hello, I'm Charlton Shih
         </h1>
