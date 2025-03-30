@@ -31,7 +31,7 @@ const CButton = () => {
                 C
               </text>
             </svg>
-            <span className="text text-2xl">Charlton Shih</span>
+            <span className="text text-xl">Charlton Shih</span>
           </button>
         </a>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import CButton from './CButton';
+import CButton from './NameButton';
 
 const Navbar = () => {
   return (

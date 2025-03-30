@@ -58,7 +58,7 @@ function App() {
             `}
         >
           <div className="flex justify-center py-70 h-screen">
-            <div className="text-8xl font-bold text-center text-white z-2">Charlton Shih</div>
+            <div className="text-8xl font-medium text-center font-serif text-white z-2">Charlton Shih</div>
             <LoadingBox />
           </div>
         </div>

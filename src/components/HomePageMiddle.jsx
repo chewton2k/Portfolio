@@ -364,7 +364,7 @@ const HomePageMiddle = () => {
 
   return (
     <div 
-  className="relative flex flex-col justify-center w-full min-h-[60vh] shadow-xl backdrop-brightness-90 bg-cover bg-center"
+  className="relative flex flex-col justify-center w-full min-h-[50vh] bg-cover bg-center"
   ref={containerRef}
 >
       {balls.map((ball, index) => (
