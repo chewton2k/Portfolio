@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import SwitchDescription from './SwitchDescription';
 
 const HomePageMiddle = () => {
-  const NUM_BALLS = 30;
+  const NUM_BALLS = 7;
   const BALL_SIZE = 80;
   const BALL_RADIUS = BALL_SIZE / 2;
   
@@ -9,14 +10,16 @@ const HomePageMiddle = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [draggedBallIndex, setDraggedBallIndex] = useState(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [textObstacles, setTextObstacles] = useState([]);
   
   const containerRef = useRef(null);
   const ballRefs = useRef([]);
+  const headingRef = useRef(null);
+  const switchDescRef = useRef(null);
   const lastTimeRef = useRef(performance.now());
   const positionHistoryRef = useRef([]);
   const requestRef = useRef(null);
 
-  // Initialize balls only once
   useEffect(() => {
     if (containerRef.current && balls.length === 0) {
       const { width, height } = containerRef.current.getBoundingClientRect();
@@ -40,6 +43,48 @@ const HomePageMiddle = () => {
       ballRefs.current = initialBalls.map(() => React.createRef());
     }
   }, [balls.length]);
+
+  useEffect(() => {
+    const detectTextElements = () => {
+      if (!containerRef.current || !headingRef.current || !switchDescRef.current) return;
+      
+      const containerRect = containerRef.current.getBoundingClientRect();
+      
+      const headingRect = headingRef.current.getBoundingClientRect();
+      const headingObstacle = {
+        left: headingRect.left - containerRect.left,
+        top: headingRect.top - containerRect.top,
+        right: headingRect.right - containerRect.left,
+        bottom: headingRect.bottom - containerRect.top,
+        width: headingRect.width,
+        height: headingRect.height,
+        type: 'heading'
+      };
+      
+      const switchRect = switchDescRef.current.getBoundingClientRect();
+      const switchObstacle = {
+        left: switchRect.left - containerRect.left,
+        top: switchRect.top - containerRect.top,
+        right: switchRect.right - containerRect.left,
+        bottom: switchRect.bottom - containerRect.top,
+        width: switchRect.width,
+        height: switchRect.height,
+        type: 'switch'
+      };
+      
+      setTextObstacles([headingObstacle, switchObstacle]);
+    };
+    
+    detectTextElements();
+    window.addEventListener('resize', detectTextElements);
+    
+    const timeoutId = setTimeout(detectTextElements, 500);
+    
+    return () => {
+      window.removeEventListener('resize', detectTextElements);
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   // Handle page visibility changes
   useEffect(() => {
@@ -146,7 +191,7 @@ const HomePageMiddle = () => {
     positionHistoryRef.current = [];
   };
 
-  const checkCollisions = (balls) => {
+  const checkBallCollisions = (balls) => {
     const newBalls = [...balls];
     
     for (let i = 0; i < newBalls.length; i++) {
@@ -202,6 +247,47 @@ const HomePageMiddle = () => {
     return newBalls;
   };
 
+  const checkTextCollisions = (balls) => {
+    if (!textObstacles.length) return balls;
+    
+    return balls.map(ball => {
+      if (isDragging && ball.id === draggedBallIndex) {
+        return ball;
+      }
+      
+      const ballCenterX = ball.position.x + BALL_RADIUS;
+      const ballCenterY = ball.position.y + BALL_RADIUS;
+      
+      let newBall = { ...ball };
+      for (const obstacle of textObstacles) {
+        const closestX = Math.max(obstacle.left, Math.min(ballCenterX, obstacle.right));
+        const closestY = Math.max(obstacle.top, Math.min(ballCenterY, obstacle.bottom));
+        
+        const distanceX = ballCenterX - closestX;
+        const distanceY = ballCenterY - closestY;
+        const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+        
+        if (distance < BALL_RADIUS) {
+          const nx = distanceX / distance;
+          const ny = distanceY / distance;
+          
+          const penetration = BALL_RADIUS - distance;
+          
+          newBall.position.x += nx * penetration;
+          newBall.position.y += ny * penetration;
+          
+          const dot = newBall.velocity.x * nx + newBall.velocity.y * ny;
+          
+          const restitution = 0.7;
+          newBall.velocity.x = newBall.velocity.x - (1 + restitution) * dot * nx;
+          newBall.velocity.y = newBall.velocity.y - (1 + restitution) * dot * ny;
+        }
+      }
+      
+      return newBall;
+    });
+  };
+
   useEffect(() => {
     const applyPhysics = (time) => {
       const deltaTime = time - lastTimeRef.current;
@@ -246,7 +332,10 @@ const HomePageMiddle = () => {
           };
         });
         
-        return checkCollisions(newBalls);
+        newBalls = checkBallCollisions(newBalls);
+        newBalls = checkTextCollisions(newBalls);
+        
+        return newBalls;
       });
 
       requestRef.current = requestAnimationFrame(applyPhysics);
@@ -273,10 +362,10 @@ const HomePageMiddle = () => {
       window.removeEventListener('touchend', handleEndDrag);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
-  }, [isDragging, draggedBallIndex, offset]);
+  }, [isDragging, draggedBallIndex, offset, textObstacles]);
 
   return (
-    <div className="relative w-full h-screen bg-blue-50" ref={containerRef}>
+    <div className="relative w-full min-h-[60vh] bg-white" ref={containerRef}>
       {balls.map((ball, index) => (
         <div
           key={ball.id}
@@ -301,10 +390,16 @@ const HomePageMiddle = () => {
         </div>
       ))}
       
-      <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center z-10 relative pointer-events-none">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center text-black">
+      <div className="container mx-auto px-4 h-full flex flex-col items-center justify-center z-10 py-60 relative pointer-events-none">
+        <h1 
+          ref={headingRef}
+          className="text-4xl md:text-6xl font-bold mb-6 text-center text-black drop-shadow-xl select-none"
+        >
           Hello, I'm Charlton Shih
         </h1>
+        <div ref={switchDescRef} className="select-none"> 
+          <SwitchDescription/> 
+        </div>
       </div>
     </div>
   );

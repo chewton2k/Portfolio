@@ -6,7 +6,7 @@ import EmailButton from './EmailButton';
 
 const Navbar = () => {
   return (
-    <nav className="flex flex-wrap justify-between items-center text-black py-3 px-5 shadow-md w-full">
+    <nav className="flex flex-wrap justify-between items-center text-black py-3 px-5 shadow-xl w-full border-1">
       {/* Left links */}
       <div className="flex flex-wrap items-center space-x-4 md:space-x-10">
         <Link to="/" className="text-l font-light hover:scale-105 duration-200 hover:opacity-50">
