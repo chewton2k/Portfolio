@@ -11,6 +11,33 @@ html {
   color:white, 
 }
 
+/*touch-specific styles */
+body.touch-device {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Improve touch targets */
+@media (pointer: coarse) {
+  a, button, [role="button"] {
+      min-width: 48px;
+      min-height: 48px;
+  }
+  
+  .nav-link {
+      padding: 12px 16px;
+  }
+}
+
+/* Prevent zoom on double-tap */
+* {
+  touch-action: manipulation;
+}
+
 /* Loading blocks */
 .boxes {
   --size: 32px;
