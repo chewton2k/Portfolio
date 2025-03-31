@@ -27,7 +27,7 @@ const AboutPage = () => {
           <div className="md:col-span-1 md:col-start-2">
             <div className="space-y-8">
               <p className="text-sm text-white font-mono">
-                In my spare time, I challenge myself to be active, live a healthy lifestyle, and dedicate time to learning—whether it's building new projects, exploring the depths of computer organization, or dabbling with low-level programming and reinforcement learning.
+                In my spare time, I challenge myself to be active and dedicate time to learning—whether it's building new projects, exploring new concepts within math and cs, or dabbling with low-level programming and reinforcement learning.
               </p>
             </div>
           </div>

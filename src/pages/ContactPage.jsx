@@ -23,7 +23,7 @@ const ContactPage = () => {
                 style={{ color: "transparent" }}
               />
             <p class="font-mono text-sm text-gray-500">
-                CS @ UCLA, c/o 2027
+                CS @ UCLA, c/o 2027 • charltonshih645@g.ucla.edu
               </p>
 
               <div className="flex items-center gap-8">

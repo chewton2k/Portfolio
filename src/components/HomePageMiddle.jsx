@@ -16,37 +16,14 @@ const HomePageMiddle = () => {
   const ballRefs = useRef([]);
   const headingRef = useRef(null);
   const switchDescRef = useRef(null);
+  const terminalRef = useRef(null);
   const lastTimeRef = useRef(performance.now());
   const positionHistoryRef = useRef([]);
   const requestRef = useRef(null);
 
   useEffect(() => {
-    if (containerRef.current && balls.length === 0) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      const initialBalls = Array.from({ length: NUM_BALLS }, (_, index) => ({
-        id: index,
-        position: { 
-          x: Math.random() * (width - BALL_SIZE),
-          y: Math.random() * (height / 2)
-        },
-        velocity: { 
-          x: Math.random() * 2 - 1, 
-          y: 0 
-        },
-        lastPosition: { 
-          x: 0, 
-          y: 0 
-        }
-      }));
-      
-      setBalls(initialBalls);
-      ballRefs.current = initialBalls.map(() => React.createRef());
-    }
-  }, [balls.length]);
-
-  useEffect(() => {
     const detectTextElements = () => {
-      if (!containerRef.current || !headingRef.current || !switchDescRef.current) return;
+      if (!containerRef.current || !headingRef.current || !switchDescRef.current || !terminalRef.current) return;
       
       const containerRect = containerRef.current.getBoundingClientRect();
       
@@ -72,7 +49,18 @@ const HomePageMiddle = () => {
         type: 'switch'
       };
       
-      setTextObstacles([headingObstacle, switchObstacle]);
+      const terminalRect = terminalRef.current.getBoundingClientRect();
+      const terminalObstacle = {
+        left: terminalRect.left - containerRect.left,
+        top: terminalRect.top - containerRect.top,
+        right: terminalRect.right - containerRect.left,
+        bottom: terminalRect.bottom - containerRect.top,
+        width: terminalRect.width,
+        height: terminalRect.height,
+        type: 'terminal'
+      };
+      
+      setTextObstacles([headingObstacle, switchObstacle, terminalObstacle]);
     };
     
     detectTextElements();
@@ -84,7 +72,58 @@ const HomePageMiddle = () => {
       window.removeEventListener('resize', detectTextElements);
       clearTimeout(timeoutId);
     };
-  }, []); 
+  }, []);
+
+  useEffect(() => {
+    if (containerRef.current && textObstacles.length > 0 && balls.length === 0) {
+      const { width, height } = containerRef.current.getBoundingClientRect();
+      
+      const initialBalls = [];
+      for (let i = 0; i < NUM_BALLS; i++) {
+        let validPosition = false;
+        let newBall;
+        
+        while (!validPosition) {
+          const x = Math.random() * (width - BALL_SIZE);
+          const y = Math.random() * (height / 2);
+          
+          let overlaps = false;
+          for (const obstacle of textObstacles) {
+            const ballCenterX = x + BALL_RADIUS;
+            const ballCenterY = y + BALL_RADIUS;
+            
+            const closestX = Math.max(obstacle.left, Math.min(ballCenterX, obstacle.right));
+            const closestY = Math.max(obstacle.top, Math.min(ballCenterY, obstacle.bottom));
+            
+            const distanceX = ballCenterX - closestX;
+            const distanceY = ballCenterY - closestY;
+            const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            if (distance < BALL_RADIUS) {
+              overlaps = true;
+              break;
+            }
+          }
+          
+          if (!overlaps) {
+            validPosition = true;
+            newBall = {
+              id: i,
+              position: { x, y },
+              velocity: { x: Math.random() * 2 - 1, y: 0 },
+              lastPosition: { x: 0, y: 0 }
+            };
+          }
+        }
+        
+        initialBalls.push(newBall);
+      }
+      
+      setBalls(initialBalls);
+      ballRefs.current = initialBalls.map(() => React.createRef());
+    }
+  }, [balls.length, textObstacles]);
+
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden' && isDragging) {
@@ -364,9 +403,9 @@ const HomePageMiddle = () => {
 
   return (
     <div 
-  className="relative flex flex-col justify-center w-full min-h-[50vh] bg-cover bg-center"
-  ref={containerRef}
->
+      className="container h-screen relative flex flex-col justify-center w-full min-h-[50vh] bg-cover bg-center"
+      ref={containerRef}
+    >
       {balls.map((ball, index) => (
         <div
           key={ball.id}
@@ -391,15 +430,48 @@ const HomePageMiddle = () => {
         </div>
       ))}
       
-      <div className="container mx-auto px-4 h-full justify-cente flex flex-col items-center z-10 relative pointer-events-none">
+      <div className="mx-auto px-4 py-30 h-full flex flex-col items-center z-10 relative pointer-events-none">
         <h1 
           ref={headingRef}
           className="text-4xl md:text-6xl font-mono font-medium mb-6 text-center text-white select-none"
         >
-          Hello, I'm Charlton Shih
+          Charlton Shih
         </h1>
-        <div ref={switchDescRef} className="select-none"> 
+        <div ref={switchDescRef} className="select-none text-center"> 
           <SwitchDescription/> 
+        </div>
+        
+        <div className="mt-40 w-full max-w-lg mx-auto" ref={terminalRef}>
+          <aside className="bg-gray-900 text-white p-6 rounded-lg font-mono shadow-lg">
+            <div className="flex justify-between items-center">
+              <div className="flex space-x-2 group px-1 py-1 cursor-pointer">
+                <div className="w-3 h-3 rounded-full bg-red-500 flex hover:text-black">
+                  <span className="opacity-0 group-hover:opacity-100 text-xs font-bold">x</span>
+                </div>  
+                <div className="w-3 h-3 rounded-full bg-yellow-500 flex hover:text-black">
+                  <span className="opacity-0 group-hover:opacity-100 text-xs font-bold">-</span>
+                </div>
+                <div className="w-3 h-3 rounded-full bg-green-500 flex hover:text-black">
+                  <span className="opacity-0 group-hover:opacity-100 text-xs font-bold">+</span>
+                </div>
+              </div>
+              <p className="text-sm">bash</p>
+            </div>
+            <div className="mt-4">
+              <p className="text-green-400">$ npm install</p>
+              <p className="text-white">
+                added 1 package, and audited 2 packages in 3s
+              </p>
+              <p className="text-white mb-3">
+                <br />
+                Welcome to my website! I'm a college student majoring in computer science at UCLA
+                <br />
+              </p>
+              <div className="flex">
+                <span className="text-green-400 mr-2">$</span>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </div>
