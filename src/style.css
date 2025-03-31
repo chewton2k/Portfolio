@@ -11,31 +11,35 @@ html {
   color:white, 
 }
 
-/*touch-specific styles */
-body.touch-device {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+/* Touch device specific styles */
+.touch-scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
 }
 
-/* Improve touch targets */
-@media (pointer: coarse) {
-  a, button, [role="button"] {
-      min-width: 48px;
-      min-height: 48px;
-  }
-  
-  .nav-link {
-      padding: 12px 16px;
-  }
+.scrollable {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
 }
 
-/* Prevent zoom on double-tap */
-* {
-  touch-action: manipulation;
+/* Prevent pull-to-refresh on mobile devices */
+html, body {
+  overscroll-behavior-y: none;
+}
+
+/* Optional: Improve touch targets */
+.touch-device button,
+.touch-device a,
+.touch-device input[type="submit"],
+.touch-device input[type="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Optional: Add momentum scrolling for iOS */
+.touch-device .pages-container {
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Loading blocks */

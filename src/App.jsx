@@ -21,7 +21,6 @@ function App() {
     const handleLoad = () => {
       const elapsed = Date.now() - loadStartTime;
       const remainingTime = Math.max(0, minLoadTime - elapsed);
-
       setTimeout(() => {
         setIsTransitioning(true);
         setTimeout(() => {
@@ -39,8 +38,58 @@ function App() {
       );
     };
 
+    // Add touch device class to body
     if (isTouchDevice()) {
       document.body.classList.add("touch-device");
+      
+      // Add touch events handling
+      const preventDefaultForScrollKeys = (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+          return; // Don't prevent default for input fields
+        }
+        
+        // Allow default touch behavior for scrollable elements
+        let isScrollable = false;
+        let element = e.target;
+        
+        while (element) {
+          const style = window.getComputedStyle(element);
+          const overflow = style.getPropertyValue('overflow');
+          const overflowY = style.getPropertyValue('overflow-y');
+          
+          if (
+            overflow === 'auto' || 
+            overflow === 'scroll' || 
+            overflowY === 'auto' || 
+            overflowY === 'scroll'
+          ) {
+            isScrollable = true;
+            break;
+          }
+          
+          element = element.parentElement;
+        }
+        
+        if (!isScrollable) {
+          e.preventDefault();
+        }
+      };
+      
+
+      document.addEventListener('touchstart', () => {}, { passive: true });
+      document.addEventListener('touchmove', () => {}, { passive: true });
+      
+      const style = document.createElement('style');
+      style.textContent = `
+        .touch-device * {
+          -webkit-overflow-scrolling: touch;
+        }
+        .touch-device .scrollable {
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+      `;
+      document.head.appendChild(style);
     }
 
     if (document.readyState === "complete") {
@@ -63,54 +112,48 @@ function App() {
   return (
     <>
       {/* Loading Screen */}
-      <div
-        className={`fixed inset-0 z-50 transition-opacity duration-400 ${
-          isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
-        } ${isTransitioning ? "opacity-0" : ""}`}
-      >
-        <div className="flex justify-center py-70 h-screen">
+      {isLoading && (
+        <div className={`loading-screen ${isTransitioning ? "fade-out" : ""}`}>
+  <div className="flex justify-center py-70 h-screen">
           <div className="text-8xl font-medium text-center font-serif text-white z-2">
             Charlton Shih
           </div>
           <LoadingBox />
         </div>
-      </div>
+        </div>
+      )}
 
       {/* Main Content */}
-      <div
-        className={`transition-opacity duration-300 ${
-          isLoading ? "opacity-0" : "opacity-100"
-        }`}
-      >
+      {!isLoading && (
         <div className="flex">
-          <Navbar />
-          <main className="ml-40 w-full">
-            <section id="home" className="min-h-screen pt-5">
-              <HomePage />
-            </section>
+        <Navbar />
+        <main className="ml-40 w-full">
+          <section id="home" className="pages-container min-h-screen pt-5">
+            <HomePage />
+          </section>
 
-            <section id="about" className="min-h-screen pt-5">
-              <AboutPage />
-            </section>
+          <section id="about" className="pages-container min-h-screen pt-5">
+            <AboutPage />
+          </section>
 
-            <section id="experience" className="min-h-screen pt-5">
-              <ExperiencePage />
-            </section>
+          <section id="experience" className="pages-container min-h-screen pt-5">
+            <ExperiencePage />
+          </section>
 
-            <section id="projects" className="min-h-screen pt-5">
-              <ProjectsPage />
-            </section>
+          <section id="projects" className="pages-container min-h-screen pt-5">
+            <ProjectsPage />
+          </section>
 
-            <section id="pictures" className="min-h-screen pt-5">
-              <PicturePage />
-            </section>
+          <section id="pictures" className="pages-container min-h-screen pt-5">
+            <PicturePage />
+          </section>
 
-            <section id="contact" className="min-h-screen pt-5">
-              <ContactPage />
-            </section>
-          </main>
-        </div>
+          <section id="contact" className="pages-container min-h-screen pt-5">
+            <ContactPage />
+          </section>
+        </main>
       </div>
+      )}
     </>
   );
 }
