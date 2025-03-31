@@ -6,7 +6,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/chunckysquirrel.JPG" 
+          src="/Portfolio/public/chunckysquirrel.JPG" 
           alt="Chunky Squirrel" 
           className="card__image w-full h-full object-cover"
         />
@@ -21,7 +21,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/powell.jpeg" 
+          src="/Portfolio/public/powell.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -36,7 +36,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/uclafire.jpeg" 
+          src="/Portfolio/public/uclafire.jpeg" 
           alt="UCLA fire" 
           className="card__image w-full h-full object-cover"
         />
@@ -51,7 +51,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/studybusiness.jpeg" 
+          src="/Portfolio/public/studybusiness.jpeg" 
           alt="Studying" 
           className="card__image w-full h-full object-cover"
         />
@@ -66,7 +66,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/bittybite.jpeg" 
+          src="/Portfolio/public/bittybite.jpeg" 
           alt="Bittybites" 
           className="card__image w-full h-full object-cover"
         />
@@ -81,7 +81,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/gymday.jpeg" 
+          src="/Portfolio/public/gymday.jpeg" 
           alt="Gym Day" 
           className="card__image w-full h-full object-cover"
         />
@@ -96,7 +96,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/fountain.jpeg" 
+          src="/Portfolio/public/fountain.jpeg" 
           alt="Fountain at night" 
           className="card__image w-full h-full object-cover"
         />
