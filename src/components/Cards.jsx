@@ -6,7 +6,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/chunckysquirrel.JPG" 
+          src="../../public/chunckysquirrel.JPG" 
           alt="Chunky Squirrel" 
           className="card__image w-full h-full object-cover"
         />
@@ -21,7 +21,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/powell.jpeg" 
+          src="public/powell.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -36,7 +36,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/uclafire.jpeg" 
+          src="public/uclafire.jpeg" 
           alt="Chunky Squirrel" 
           className="card__image w-full h-full object-cover"
         />
@@ -51,7 +51,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/studybusiness.jpeg" 
+          src="public/studybusiness.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -66,7 +66,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/bittybite.jpeg" 
+          src="public/bittybite.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -81,7 +81,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/gymday.jpeg" 
+          src="public/gymday.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -96,7 +96,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/fountain.jpeg" 
+          src="public/fountain.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
