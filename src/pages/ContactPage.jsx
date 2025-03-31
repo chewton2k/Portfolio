@@ -23,7 +23,8 @@ const ContactPage = () => {
                 style={{ color: "transparent" }}
               />
             <p class="font-mono text-sm text-gray-500">
-                CS @ UCLA, c/o 2027 • charltonshih645@g.ucla.edu
+                CS @ UCLA, c/o 2027 • charltonshih645@g.ucla.edu <br/> 
+                <a href="/Portfolio/Charlton_Shih_CV.pdf" download="Charlton_Shih_CV.pdf" className="hover:underline"> CV @ March 2025</a>
               </p>
 
               <div className="flex items-center gap-8">
