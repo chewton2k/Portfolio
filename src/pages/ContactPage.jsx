@@ -7,11 +7,11 @@ import EmailButton from "../components/EmailButton";
 const ContactPage = () => {
   return (
     <section id="contact" className="min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16 flex flex-col justify-between">
-      <div className="max-w-5xl" style={{ opacity: 1, transform: "none" }}>
+      <div className="max-w-4xl" style={{ opacity: 1, transform: "none" }}>
         <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">contact.</h2>
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2 md:col-start-2">
-            <div className="space-y-8 max-w-2xl rounded-4xl">
+            <div className="space-y-4 max-w-5xl rounded-4xl">
               <img
                 alt="Charlton Shih"
                 loading="lazy"
