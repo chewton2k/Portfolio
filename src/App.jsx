@@ -10,107 +10,109 @@ import PicturePage from "./pages/PicturePage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-    useEffect(() => {
-        const minLoadTime = 1200; 
-        const fadeDuration = 500; 
-        const loadStartTime = Date.now();
+  useEffect(() => {
+    const minLoadTime = 1200;
+    const fadeDuration = 500;
+    const loadStartTime = Date.now();
 
-        const handleLoad = () => {
-            const elapsed = Date.now() - loadStartTime;
-            const remainingTime = Math.max(0, minLoadTime - elapsed);
-            
-            setTimeout(() => {
-                setIsTransitioning(true);
-                setTimeout(() => {
-                    setIsLoading(false);
-                    setIsTransitioning(false);
-                }, fadeDuration);
-            }, remainingTime);
-        };
+    const handleLoad = () => {
+      const elapsed = Date.now() - loadStartTime;
+      const remainingTime = Math.max(0, minLoadTime - elapsed);
 
-        const isTouchDevice = () => {
-            return ('ontouchstart' in window) ||
-                (navigator.maxTouchPoints > 0) ||
-                (navigator.msMaxTouchPoints > 0);
-        };
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsTransitioning(false);
+        }, fadeDuration);
+      }, remainingTime);
+    };
 
-        if (isTouchDevice()) {
-            document.body.classList.add('touch-device');
-        }
+    const isTouchDevice = () => {
+      return (
+        "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        navigator.msMaxTouchPoints > 0
+      );
+    };
 
-        if (document.readyState === "complete") {
-            setTimeout(() => {
-                setIsTransitioning(true);
-                setTimeout(() => {
-                    setIsLoading(false);
-                    setIsTransitioning(false);
-                }, fadeDuration);
-            }, minLoadTime);
-        } else {
-            window.addEventListener("load", handleLoad);
-        }
+    if (isTouchDevice()) {
+      document.body.classList.add("touch-device");
+    }
 
-        return () => {
-            window.removeEventListener("load", handleLoad);
-        };
-    }, []);
+    if (document.readyState === "complete") {
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          setIsTransitioning(false);
+        }, fadeDuration);
+      }, minLoadTime);
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
 
-    return (
-      <>
-        <div
-          className={`
-                fixed inset-0 z-50 transition-opacity duration-400
-                ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"}
-                ${isTransitioning ? "opacity-0" : ""}
-            `}
-        >
-          <div className="flex justify-center py-70 h-screen">
-            <div className="text-8xl font-medium text-center font-serif text-white z-2">Charlton Shih</div>
-            <LoadingBox />
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* Loading Screen */}
+      <div
+        className={`fixed inset-0 z-50 transition-opacity duration-400 ${
+          isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
+        } ${isTransitioning ? "opacity-0" : ""}`}
+      >
+        <div className="flex justify-center py-70 h-screen">
+          <div className="text-8xl font-medium text-center font-serif text-white z-2">
+            Charlton Shih
           </div>
+          <LoadingBox />
         </div>
+      </div>
 
-        <div
-          className={`
-                transition-opacity duration-300
-                ${isLoading ? "opacity-0" : "opacity-100"}
-            `}
-        >
-          <div className="flex">
-            <Navbar />
-            <main className="ml-40 w-full">
-              <section id="home" className="min-h-screen pt-5">
-                <HomePage />
-              </section>
+      {/* Main Content */}
+      <div
+        className={`transition-opacity duration-300 ${
+          isLoading ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div className="flex">
+          <Navbar />
+          <main className="ml-40 w-full">
+            <section id="home" className="min-h-screen pt-5">
+              <HomePage />
+            </section>
 
-              <section id="about" className="min-h-screen pt-5">
-                <AboutPage />
-              </section>
+            <section id="about" className="min-h-screen pt-5">
+              <AboutPage />
+            </section>
 
-              <section id="experience" className="min-h-screen pt-5">
-                <ExperiencePage />
-              </section>
+            <section id="experience" className="min-h-screen pt-5">
+              <ExperiencePage />
+            </section>
 
-              <section id="projects" className="min-h-screen pt-5">
-                <ProjectsPage />
-              </section>
+            <section id="projects" className="min-h-screen pt-5">
+              <ProjectsPage />
+            </section>
 
-              <section id="pictures" className="min-h-screen pt-5">
-                <PicturePage />
-              </section>
+            <section id="pictures" className="min-h-screen pt-5">
+              <PicturePage />
+            </section>
 
-              <section id="contact" className="min-h-screen pt-5">
-                <ContactPage/> 
-              </section>
-
-            </main>
-          </div>
+            <section id="contact" className="min-h-screen pt-5">
+              <ContactPage />
+            </section>
+          </main>
         </div>
-      </>
-    );
+      </div>
+    </>
+  );
 }
 
 export default App;
