@@ -2,17 +2,13 @@ import React from 'react'
 
 const CButton = () => { 
 
-    const handleRefresh = () => {
-        window.reload();
-      };
-
     return (
         <div className="fixed left-5 top-10 z-100"> 
         <a 
           href="#home" 
           className="text-sm font-light hover:scale-110 duration-500 cursor-pointer"
         >
-          <button className="Btn" onClick={handleRefresh}>
+          <button className="Btn">
             <svg
               viewBox="0 0 24 24"
               height="24"
