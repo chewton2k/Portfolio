@@ -130,7 +130,7 @@ const ExperiencePage = () => {
               UCLA Henry Samueli School of Engineering and Applied Science
               </h3>
               <p class="text-sm text-white">
-                Jan 2024 - July &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
+                Jan 2024 - Jul 2024 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
               </p>
               <p class="text-sm text-gray-500">
               • Led discussion sessions of 20-30 students on course topics for multivariable calculus <br/> 
