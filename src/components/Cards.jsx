@@ -6,7 +6,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="../../public/chunckysquirrel.JPG" 
+          src="~/chunckysquirrel.JPG" 
           alt="Chunky Squirrel" 
           className="card__image w-full h-full object-cover"
         />
@@ -21,7 +21,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="public/powell.jpeg" 
+          src="/powell.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
