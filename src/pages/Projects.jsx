@@ -6,32 +6,107 @@ const ProjectsPage = () => {
       <div className="max-w-5xl" style={{ opacity: 1, transform: "none" }}>
         <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">projects.</h2>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-1 md:col-start-2">
-            <div className="space-y-8">
-              <p className="text-sm text-white font-mono">
-                Hello, I'm Charlton Shih and I am currently pursuing a bachelor's degree in Computer Science at UCLA. I have a strong interest in applying algorithms and data structures to solve real-world problems, particularly in the fields of machine learning and software development.
+        <div class="grid md:grid-cols-4 gap-2">
+          <div class="md:col-span-2 md:col-start-1">
+            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+
+            <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
+
+            <div class="space-y-4 max-w-2xl">
+              <p class="font-mono text-sm text-gray-500">
+                Undergraduate Researcher{" "}
               </p>
-            </div>
-          </div>
-          <div className="md:col-span-1 md:col-start-3 md:mt-32">
-            <div className="space-y-8">
-              <p className="text-sm text-white font-mono">
-                My approach combines exploring the applications of mathematics and computer science to develop algorithms and solve real-world problems. I'm passionate about mathematics, and I'm currently working on optimization problems, machine learning models, and device development.
+              <h3 class="text-3xl font-medium text-white">
+                Physical Sciences and Mathematics Lab
+              </h3>
+              <p class="text-sm text-white">
+                Dec 2025 - Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles,
+                California
+              </p>
+              <p class="text-sm text-gray-500">
+                • Collaborated with a three-person team to develop DCM cascading bandits for a multiplayer setting, aiming to establish an upper
+                sublinear regret-bound <br />
+                • Analyzed and experimented with Thompson Sampling and linear UCB indexes in multi-agent and
+                multi-click bandit framework
               </p>
             </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-16">
-          <div className="md:col-span-1 md:col-start-2">
-            <div className="space-y-8">
-              <p className="text-sm text-white font-mono">
-                In my spare time, I challenge myself to be active, live a healthy lifestyle, and dedicate time to learning—whether it's building new projects, exploring the depths of computer organization, or dabbling with low-level programming and reinforcement learning.
+        <div class="grid md:grid-cols-4 gap-2">
+          <div class="md:col-span-2 md:col-start-3">
+            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+
+            <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
+
+            <div class="space-y-4 max-w-2xl">
+              <p class="font-mono text-sm text-gray-500">
+                Undergraduate Researcher{" "}
+              </p>
+              <h3 class="text-3xl font-medium text-white">
+                UCLA Computer Science Department
+              </h3>
+              <p class="text-sm text-white">
+                Jul 2024 - Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles,
+                California
+              </p>
+              <p class="text-sm text-gray-500">
+                • Collaborated with a 10-person team to develop affordable autonomous surgery robots under Prof. Arisaka and Yunbo Wang <br/> 
+                • Established servomotor communication using ROS2, ESP32, and Python<br/>
+                • Boosted tracking efficiency through OpenCV for ultrasound reconstruction and biopsy operations <br/> 
+                • Applied imitation learning with ACT, CNNs, and motor outputs to enhance robotic operations
               </p>
             </div>
           </div>
         </div>
+
+        <div class="grid md:grid-cols-4 gap-2">
+          <div class="md:col-span-2 md:col-start-3">
+            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+
+            <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
+
+            <div class="space-y-4 max-w-2xl">
+              <p class="font-mono text-sm text-gray-500">
+                Learning Assistant (CS 35L) {" "}
+              </p>
+              <h3 class="text-3xl font-medium text-white">
+              UCLA Henry Samueli School of Engineering and Applied Science
+              </h3>
+              <p class="text-sm text-white">
+                Mar 2025 - Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
+              </p>
+              <p class="text-sm text-gray-500">
+                • ... 
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-2">
+          <div class="md:col-span-2 md:col-start-1">
+            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+
+            <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
+
+            <div class="space-y-4 max-w-2xl">
+              <p class="font-mono text-sm text-gray-500">
+                Learning Assistant (Math 32B) {" "}
+              </p>
+              <h3 class="text-3xl font-medium text-white">
+              UCLA Henry Samueli School of Engineering and Applied Science
+              </h3>
+              <p class="text-sm text-white">
+                Jan 2024 - July &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
+              </p>
+              <p class="text-sm text-gray-500">
+              • Led discussion sessions of 20-30 students on course topics for multivariable calculus <br/> 
+              • Collaborated with course professors and peers to align discussion sessions with course learning objectives
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

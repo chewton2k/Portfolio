@@ -16,11 +16,11 @@ const Navbar = () => {
         <a href="#about" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
           About
         </a>
-        <a href="#projects" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          Projects
-        </a>
         <a href="#experience" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
           Experience
+        </a>
+        <a href="#projects" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
+          Projects
         </a>
         <a href="#pictures" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
           Pictures

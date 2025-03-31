@@ -22,6 +22,9 @@ const ContactPage = () => {
                 src="/me.jpeg"
                 style={{ color: "transparent" }}
               />
+            <p class="font-mono text-sm text-gray-500">
+                CS @ UCLA, c/o 2027
+              </p>
 
               <div className="flex items-center gap-8">
                 <a

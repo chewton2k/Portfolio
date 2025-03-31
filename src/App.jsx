@@ -80,12 +80,12 @@ function App() {
                 <AboutPage />
               </section>
 
-              <section id="projects" className="min-h-screen pt-5">
-                <ProjectsPage />
-              </section>
-
               <section id="experience" className="min-h-screen pt-5">
                 <ExperiencePage />
+              </section>
+
+              <section id="projects" className="min-h-screen pt-5">
+                <ProjectsPage />
               </section>
 
               <section id="pictures" className="min-h-screen pt-5">
