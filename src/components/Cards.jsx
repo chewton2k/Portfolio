@@ -51,7 +51,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/public/studybusiness.jpeg" 
+          src="/Portfolio/studybusiness.jpeg" 
           alt="Studying" 
           className="card__image w-full h-full object-cover"
         />
