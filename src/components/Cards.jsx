@@ -21,7 +21,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/public/powell.jpeg" 
+          src="/Portfolio/powell.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -66,7 +66,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/public/bittybite.jpeg" 
+          src="/Portfolio/bittybite.jpeg" 
           alt="Bittybites" 
           className="card__image w-full h-full object-cover"
         />
@@ -81,7 +81,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/public/gymday.jpeg" 
+          src="/Portfolio/gymday.jpeg" 
           alt="Gym Day" 
           className="card__image w-full h-full object-cover"
         />
@@ -96,7 +96,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/Portfolio/public/fountain.jpeg" 
+          src="/Portfolio/fountain.jpeg" 
           alt="Fountain at night" 
           className="card__image w-full h-full object-cover"
         />
