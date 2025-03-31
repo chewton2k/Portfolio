@@ -3,7 +3,7 @@ import React from 'react'
 const CButton = () => { 
 
     const handleRefresh = () => {
-        window.location.reload();
+        window.reload();
       };
 
     return (
