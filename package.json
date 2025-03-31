@@ -1,7 +1,8 @@
 {
-  "name": "portfolio",
+  "homepage": "https://chewton2k.github.io/Portfolio/", 
+  "name": "charltonshih",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
