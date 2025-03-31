@@ -17,7 +17,7 @@ const AboutPage = () => {
           <div className="md:col-span-1 md:col-start-3 md:mt-32">
             <div className="space-y-8">
               <p className="text-sm text-white font-mono">
-                My approach combines exploring the applications of mathematics and computer science to develop algorithms and solve real-world problems. I'm passionate about mathematics, and I'm currently working on optimization problems, machine learning models, and device development.
+                My approach combines exploring the applications of mathematics and computer science to develop algorithms and solve real-world problems! I'm passionate about mathematics, and I'm currently working on optimization problems, machine learning models, and device development.
               </p>
             </div>
           </div>
