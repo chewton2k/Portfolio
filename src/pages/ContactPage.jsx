@@ -19,7 +19,7 @@ const ContactPage = () => {
                 height="200"
                 decoding="async"
                 className="mb-8 rounded-4xl object-cover"
-                src="/me.jpeg"
+                src="/Portfolio/me.jpeg"
                 style={{ color: "transparent" }}
               />
             <p class="font-mono text-sm text-gray-500">

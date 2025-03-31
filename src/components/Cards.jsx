@@ -21,7 +21,7 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="/powell.jpeg" 
+          src="/Portfolio/powell.jpeg" 
           alt="Powell" 
           className="card__image w-full h-full object-cover"
         />
@@ -36,8 +36,8 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="public/uclafire.jpeg" 
-          alt="Chunky Squirrel" 
+          src="/Portfolio/uclafire.jpeg" 
+          alt="UCLA fire" 
           className="card__image w-full h-full object-cover"
         />
         <div className="card__content">
@@ -51,8 +51,8 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="public/studybusiness.jpeg" 
-          alt="Powell" 
+          src="/Portfolio/studybusiness.jpeg" 
+          alt="Studying" 
           className="card__image w-full h-full object-cover"
         />
         <div className="card__content">
@@ -66,8 +66,8 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="public/bittybite.jpeg" 
-          alt="Powell" 
+          src="/Portfolio/bittybite.jpeg" 
+          alt="Bittybites" 
           className="card__image w-full h-full object-cover"
         />
         <div className="card__content">
@@ -81,8 +81,8 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="public/gymday.jpeg" 
-          alt="Powell" 
+          src="/Portfolio/gymday.jpeg" 
+          alt="Gym Day" 
           className="card__image w-full h-full object-cover"
         />
         <div className="card__content">
@@ -96,8 +96,8 @@ const Cards = () => {
       <div className="card">
         {/* Image goes here */}
         <img 
-          src="public/fountain.jpeg" 
-          alt="Powell" 
+          src="/Portfolio/fountain.jpeg" 
+          alt="Fountain at night" 
           className="card__image w-full h-full object-cover"
         />
         <div className="card__content">

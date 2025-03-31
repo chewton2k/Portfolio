@@ -422,7 +422,7 @@ const HomePageMiddle = () => {
           onTouchStart={(e) => handleTouchStart(e, index)}
         >
           <img 
-            src="/tennisball.avif" 
+            src="/Portfolio/tennisball.avif" 
             alt="ball" 
             className="w-full h-full object-cover rounded-full select-none"
             draggable="false"
