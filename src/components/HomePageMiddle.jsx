@@ -456,11 +456,11 @@ const HomePageMiddle = () => {
               </p>
               <p className="text-white mb-3">
                 <br />
-                Welcome to my website! I'm a college student majoring in computer science at UCLA
+                Welcome to my website! I'm a college student interested in software engineering, AI, and cybersecurity.
                 <br />
               </p>
               <div className="flex">
-                <span className="text-green-400 mr-2">$</span>
+                <span className="text-green-400 mr-2">$ cowsay </span>
               </div>
             </div>
           </aside>

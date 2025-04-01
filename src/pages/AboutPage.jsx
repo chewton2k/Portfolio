@@ -6,7 +6,7 @@ const AboutPage = () => {
       <div className="max-w-4xl" style={{ opacity: 1, transform: "none" }}>
         <h2 className="text-4xl md:text-7xl font-medium mb-40 max-w-2xl text-white">about.</h2>
 
-        <div className="grid md:grid-cols-5 mt-10">
+        <div className="grid md:grid-cols-5 mt-6 gap-10">
           <div className="md:col-span-2 md:col-start-2">
             <div className="space-y-6">
               <p className="text-sm text-white font-mono">
@@ -23,7 +23,7 @@ const AboutPage = () => {
           </div>
         </div>
     
-        <div className="grid md:grid-cols-5 gap-8 mt-20">
+        <div className="grid md:grid-cols-5 gap-8 mt-16">
           <div className="md:col-span-2 md:col-start-2">
             <div className="space-y-10">
               <p className="text-sm text-white font-mono">

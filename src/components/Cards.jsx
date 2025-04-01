@@ -108,6 +108,21 @@ const Cards = () => {
         </div>
       </div>
 
+      <div className="card">
+        {/* Image goes here */}
+        <img 
+          src="/Portfolio/tennis.jpg" 
+          alt="Tennis with Friends" 
+          className="card__image w-full h-full object-cover"
+        />
+        <div className="card__content">
+          <p className="card__title">Playing Tennis</p>
+          <p className="card__description">
+            One of the last hitting sessions I had with Son and Kyle  
+          </p>
+        </div>
+      </div>
+
 
 
     </div>

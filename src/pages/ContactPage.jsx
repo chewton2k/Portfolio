@@ -6,9 +6,14 @@ import EmailButton from "../components/EmailButton";
 
 const ContactPage = () => {
   return (
-    <section id="contact" className="min-h-screen w-6/8 px-4 md:px-24 py-16 md:py-32 md:ml-16 flex flex-col justify-between">
+    <section
+      id="contact"
+      className="min-h-screen w-6/8 px-4 md:px-24 py-16 md:py-32 md:ml-16 flex flex-col justify-between"
+    >
       <div className="max-w-4xl" style={{ opacity: 1, transform: "none" }}>
-        <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">contact.</h2>
+        <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">
+          contact.
+        </h2>
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2 md:col-start-2">
             <div className="space-y-4 max-w-5xl rounded-4xl">
@@ -22,9 +27,32 @@ const ContactPage = () => {
                 src="/Portfolio/me.jpeg"
                 style={{ color: "transparent" }}
               />
-            <p class="font-mono text-sm text-gray-500">
-                CS @ UCLA, c/o 2027 • charltonshih645@g.ucla.edu <br/> 
-                <a href="/Portfolio/Charlton_Shih_CV.pdf" download="Charlton_Shih_CV.pdf" className="hover:underline"> CV (March 2025)</a>
+              <p class="font-mono text-sm text-gray-500">
+                CS @ UCLA, c/o 2027 • charltonshih645@g.ucla.edu <br />
+                <br/>
+                <button class="cursor-pointer flex justify-between bg-gray-800 px-3 py-1.5 rounded-full text-white text-sm tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-[200px]">
+                <a
+                  href="/Portfolio/Charlton_Shih_CV.pdf"
+                  download="Charlton_Shih_CV.pdf"
+                >
+                  {" "}
+                  CV (March 2025)
+                </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    class="w-5 h-5 animate-bounce"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                    ></path>
+                  </svg>
+                </button>
               </p>
 
               <div className="flex items-center gap-8">
@@ -34,7 +62,7 @@ const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="inline-flex"
                 >
-                  <LinkedInButton/>
+                  <LinkedInButton />
                 </a>
                 <a
                   href="https://github.com/chewton2k"
@@ -42,7 +70,7 @@ const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="inline-flex"
                 >
-                  <GithubButton/>
+                  <GithubButton />
                 </a>
                 <a
                   href="mailto:charltonshih645@g.ucla.edu"
@@ -50,14 +78,14 @@ const ContactPage = () => {
                   rel="noopener noreferrer"
                   className="inline-flex"
                 >
-                  <EmailButton/>
+                  <EmailButton />
                 </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <div className="mt-auto">
         <HomePageBottom />
       </div>
