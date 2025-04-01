@@ -20,7 +20,7 @@ const CButton = () => {
 
   if (isMobile) {
     return (
-      <div className="absolute left-5 top-5 z-100"> 
+      <div className="fixed left-5 top-5 z-100"> 
         <a href="#intro" className="text-sm font-light cursor-pointer">
           <button className="mobile-btn">
             <svg

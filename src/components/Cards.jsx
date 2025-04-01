@@ -2,7 +2,7 @@ import React from "react";
 
 const Cards = () => {
   return (
-    <div className="flex flex-wrap gap-8 pl-8"> 
+    <div className="flex flex-wrap gap-8"> 
       <div className="card">
         {/* Image goes here */}
         <img  

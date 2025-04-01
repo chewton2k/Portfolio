@@ -113,15 +113,17 @@ function App() {
     <>
       {/* Loading Screen */}
       {isLoading && (
-        <div className={`loading-screen ${isTransitioning ? "fade-out" : ""}`}>
-  <div className="flex justify-center py-70 h-screen">
-          <div className="text-8xl font-medium text-center font-serif text-white z-2">
-            Charlton Shih
-          </div>
-          <LoadingBox />
-        </div>
-        </div>
-      )}
+  <div className={`loading-screen ${isTransitioning ? "fade-out" : ""}`}>
+    <div className="flex flex-col items-center min-h-screen">
+      {/* Name above the loading box */}
+      <div className="text-7xl font-medium text-center font-serif text-white z-10 mt-60">
+        Charlton Shih
+      </div>
+      <LoadingBox />
+    </div>
+  </div>
+)}
+
 
       {/* Main Content */}
       {!isLoading && (

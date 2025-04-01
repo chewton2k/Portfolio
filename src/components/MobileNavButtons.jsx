@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const MobileNavButton = ({ toggleNavbar }) => {
+const MobileNavButton = ({ toggleNavbar, navbarOpen }) => {
+  const handleClick = () => {
+    toggleNavbar();
+  };
+
   return (
     <button 
-      onClick={toggleNavbar}
-      className="fixed top-5 right-5 z-50 p-2 rounded-full bg-black border border-white"
+      onClick={handleClick}
+      className="fixed top-7 right-6 z-50 md:hidden"
     >
-      <svg 
-        width="24" 
-        height="24" 
-        viewBox="0 0 24 24" 
-        fill="none" 
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path 
-          d="M3 12H21M3 6H21M3 18H21" 
-          stroke="white" 
-          strokeWidth="2" 
-          strokeLinecap="round" 
-          strokeLinejoin="round"
-        />
-      </svg>
+      <div className="space-y-1">
+        <span className={`block w-5 h-0.5 bg-[#fefeff] transition-all duration-300 ${navbarOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+        <span className={`block w-5 h-0.5 bg-[#fefeff] transition-all duration-300 ${navbarOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+        <span className={`block w-5 h-0.5 bg-[#fefeff] transition-all duration-300 ${navbarOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+      </div>
     </button>
   );
 };
