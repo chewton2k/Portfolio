@@ -1,35 +1,78 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import CButton from './NameButton';
+import MobileNavButton from './MobileNavButtons';
 
 const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [navbarOpen, setNavbarOpen] = useState(false);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    function checkIfMobile() {
+      if (window.outerWidth <= 768) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+        setNavbarOpen(false);
+      }
+    }
+
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setNavbarOpen(false);
+      }
+    }
+
+    if (navbarOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [navbarOpen]);
+
+  const toggleNavbar = () => {
+    setNavbarOpen(!navbarOpen);
+  };
+
   return (
     <div>
       <div>
-        <CButton/> 
+        <CButton />
       </div>
-    <nav className="fixed left-0 top-0 h-screen w-40 bg-black shadow-xl border-white flex flex-col justify-center items-start py-10 z-50">
-      {/* Navigation Links */}
-      <div className="flex flex-col items-start space-y-6 pl-5">
-      <a href="#home" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          Intro
-        </a>
-        <a href="#about" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          About
-        </a>
-        <a href="#experience" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          Experience
-        </a>
-        <a href="#projects" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          Projects
-        </a>
-        <a href="#pictures" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          Pictures
-        </a>
-        <a href="#contact" className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer">
-          Contact
-        </a>
-      </div>
-    </nav>
+
+      {isMobile && <MobileNavButton toggleNavbar={toggleNavbar} />}
+
+      {(navbarOpen || !isMobile) && (
+        <nav
+          ref={navRef}
+          className={`fixed ${
+            isMobile ? 'top-0 right-0 h-screen w-40' : 'left-0 top-0 h-screen w-40'
+          } bg-black shadow-xl border-white flex flex-col justify-center items-start py-10 z-40`}
+        >
+          {/* Navigation Links */}
+          <div className="flex flex-col items-start space-y-6 pl-5">
+            {['Intro', 'About', 'Experience', 'Projects', 'Pictures', 'Contact'].map((section) => (
+              <a
+                key={section}
+                href={`#${section.toLowerCase()}`}
+                className="text-xs font-light font-mono text-white hover:scale-110 duration-200 hover:opacity-50 cursor-pointer"
+                onClick={() => setNavbarOpen(false)} // Close on click
+              >
+                {section}
+              </a>
+            ))}
+          </div>
+        </nav>
+      )}
     </div>
   );
 };

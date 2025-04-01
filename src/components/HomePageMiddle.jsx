@@ -11,6 +11,7 @@ const HomePageMiddle = () => {
   const [draggedBallIndex, setDraggedBallIndex] = useState(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [textObstacles, setTextObstacles] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
   
   const containerRef = useRef(null);
   const ballRefs = useRef([]);
@@ -21,6 +22,32 @@ const HomePageMiddle = () => {
   const positionHistoryRef = useRef([]);
   const requestRef = useRef(null);
 
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const isMobileDevice = window.outerWidth <= 768;
+      
+      // Additional check for touch capability as secondary method
+      const hasTouchCapability = 
+        'ontouchstart' in window || 
+        navigator.maxTouchPoints > 0 || 
+        navigator.msMaxTouchPoints > 0;
+      
+      // Set as mobile if screen is small OR it's a dedicated mobile device with touch
+      setIsMobile(isMobileDevice || (hasTouchCapability && window.outerWidth <= 1024));
+    };
+
+    // Initial check
+    checkIfMobile();
+    
+    // Re-check on resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
+
+  // Only run the ball physics code if not on mobile
   useEffect(() => {
     const detectTextElements = () => {
       if (!containerRef.current || !headingRef.current || !switchDescRef.current || !terminalRef.current) return;
@@ -63,68 +90,78 @@ const HomePageMiddle = () => {
       setTextObstacles([headingObstacle, switchObstacle, terminalObstacle]);
     };
     
-    detectTextElements();
-    window.addEventListener('resize', detectTextElements);
-    
-    const timeoutId = setTimeout(detectTextElements, 500);
-    
-    return () => {
-      window.removeEventListener('resize', detectTextElements);
-      clearTimeout(timeoutId);
-    };
-  }, []);
+    // Only run for non-mobile devices
+    if (!isMobile) {
+      detectTextElements();
+      window.addEventListener('resize', detectTextElements);
+      
+      const timeoutId = setTimeout(detectTextElements, 500);
+      
+      return () => {
+        window.removeEventListener('resize', detectTextElements);
+        clearTimeout(timeoutId);
+      };
+    }
+  }, [isMobile]);
 
   useEffect(() => {
-    if (containerRef.current && textObstacles.length > 0 && balls.length === 0) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
+    // Skip ball initialization for mobile devices
+    if (isMobile || !containerRef.current || textObstacles.length === 0 || balls.length > 0) return;
+    
+    const { width, height } = containerRef.current.getBoundingClientRect();
+    
+    const initialBalls = [];
+    for (let i = 0; i < NUM_BALLS; i++) {
+      let validPosition = false;
+      let newBall;
       
-      const initialBalls = [];
-      for (let i = 0; i < NUM_BALLS; i++) {
-        let validPosition = false;
-        let newBall;
+      while (!validPosition) {
+        const x = Math.random() * (width - BALL_SIZE);
+        const y = Math.random() * (height / 2);
         
-        while (!validPosition) {
-          const x = Math.random() * (width - BALL_SIZE);
-          const y = Math.random() * (height / 2);
+        let overlaps = false;
+        for (const obstacle of textObstacles) {
+          const ballCenterX = x + BALL_RADIUS;
+          const ballCenterY = y + BALL_RADIUS;
           
-          let overlaps = false;
-          for (const obstacle of textObstacles) {
-            const ballCenterX = x + BALL_RADIUS;
-            const ballCenterY = y + BALL_RADIUS;
-            
-            const closestX = Math.max(obstacle.left, Math.min(ballCenterX, obstacle.right));
-            const closestY = Math.max(obstacle.top, Math.min(ballCenterY, obstacle.bottom));
-            
-            const distanceX = ballCenterX - closestX;
-            const distanceY = ballCenterY - closestY;
-            const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-            
-            if (distance < BALL_RADIUS) {
-              overlaps = true;
-              break;
-            }
-          }
+          const closestX = Math.max(obstacle.left, Math.min(ballCenterX, obstacle.right));
+          const closestY = Math.max(obstacle.top, Math.min(ballCenterY, obstacle.bottom));
           
-          if (!overlaps) {
-            validPosition = true;
-            newBall = {
-              id: i,
-              position: { x, y },
-              velocity: { x: Math.random() * 2 - 1, y: 0 },
-              lastPosition: { x: 0, y: 0 }
-            };
+          const distanceX = ballCenterX - closestX;
+          const distanceY = ballCenterY - closestY;
+          const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+          
+          if (distance < BALL_RADIUS) {
+            overlaps = true;
+            break;
           }
         }
         
-        initialBalls.push(newBall);
+        if (!overlaps) {
+          validPosition = true;
+          newBall = {
+            id: i,
+            position: { x, y },
+            velocity: { x: Math.random() * 2 - 1, y: 0 },
+            lastPosition: { x: 0, y: 0 }
+          };
+        }
       }
       
-      setBalls(initialBalls);
-      ballRefs.current = initialBalls.map(() => React.createRef());
+      initialBalls.push(newBall);
     }
-  }, [balls.length, textObstacles]);
+    
+    setBalls(initialBalls);
+    ballRefs.current = initialBalls.map(() => React.createRef());
+  }, [balls.length, textObstacles, isMobile]);
 
+  // Rest of your component code...
+  // All the handlers and physics functions remain the same,
+  // but they will only run if there are balls in the state
+  
   useEffect(() => {
+    if (isMobile) return; // Skip all physics for mobile
+
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden' && isDragging) {
         handleEndDrag();
@@ -144,7 +181,7 @@ const HomePageMiddle = () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleWindowBlur);
     };
-  }, [isDragging]);
+  }, [isDragging, isMobile]);
 
   const handleStartDrag = (clientX, clientY, index) => {
     if (!ballRefs.current[index]?.current) return;
@@ -326,6 +363,9 @@ const HomePageMiddle = () => {
   };
 
   useEffect(() => {
+    // Skip physics for mobile
+    if (isMobile) return;
+    
     const applyPhysics = (time) => {
       const deltaTime = time - lastTimeRef.current;
       lastTimeRef.current = time;
@@ -384,6 +424,7 @@ const HomePageMiddle = () => {
       e.preventDefault();
     };
 
+    // Only add event listeners if not on mobile
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('mouseup', handleEndDrag);
@@ -399,14 +440,15 @@ const HomePageMiddle = () => {
       window.removeEventListener('touchend', handleEndDrag);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
-  }, [isDragging, draggedBallIndex, offset, textObstacles]);
+  }, [isDragging, draggedBallIndex, offset, textObstacles, isMobile]);
 
   return (
     <div 
       className="container h-screen relative flex flex-col justify-center w-full min-h-[50vh] bg-cover bg-center"
       ref={containerRef}
     >
-      {balls.map((ball, index) => (
+      {/* Only render balls if not on mobile */}
+      {!isMobile && balls.map((ball, index) => (
         <div
           key={ball.id}
           ref={ballRefs.current[index]}

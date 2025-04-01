@@ -8,7 +8,41 @@
 html {
   scroll-behavior: smooth;
   background-color: black;
-  color:white, 
+  color:white;
+  width:100%;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+/* Prevent pull-to-refresh on mobile devices */
+html, body {
+  overscroll-behavior-y: none;
+  width:100%; 
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+/* Make container elements respect viewport width */
+.container, div, main, section {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure mobile navbar fits within viewport */
+@media (max-width: 768px) {
+  nav {
+    width: 80%;
+    max-width: 250px;
+  }
 }
 
 /* Touch device specific styles */
@@ -21,11 +55,6 @@ html {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   height: 100%;
-}
-
-/* Prevent pull-to-refresh on mobile devices */
-html, body {
-  overscroll-behavior-y: none;
 }
 
 /* Optional: Improve touch targets */
@@ -227,10 +256,6 @@ html, body {
   }
 }
 
-html, body {
-  min-height: 100%;
-}
-
 /* inifinite loop description, switch description*/
 
 .loader {
@@ -323,6 +348,23 @@ html, body {
 
 
 /* Top left button */
+
+.mobile-btn {
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  background: #000000;
+  overflow: hidden; 
+  padding: 0 10px;
+}
+
 .Btn {
   border: 1px solid white;
   border-radius: 50%;
@@ -380,20 +422,20 @@ html, body {
 .card {
   position: relative;
   width: 200px;
-  height: 300x;
+  height: 300px;
   background-color: #f2f2f2;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  perspective: 1000px;
+  perspective: 100%;
   box-shadow: 0 0 0 5px #ffffff80;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .card svg {
-  width: 48px;
+  width: 20%;   
   fill: #333;
   transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
