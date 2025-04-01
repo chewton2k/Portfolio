@@ -69,7 +69,7 @@ const ProjectsPage = () => {
                 predictors, boosting accuracy to 58.8% <br/>
                 </p>
                 <p className="text-sm text-gray-500"> 
-                  python • jupyterlab 
+                  python • jupyterlab • Scikit-learn • Pandas • NumPy • matplotlib
                 </p>
               </div>
             </a>
