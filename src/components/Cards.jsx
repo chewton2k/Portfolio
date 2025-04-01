@@ -2,10 +2,10 @@ import React from "react";
 
 const Cards = () => {
   return (
-    <div className="flex flex-wrap gap-8 pl-10"> 
+    <div className="flex flex-wrap gap-8 pl-8"> 
       <div className="card">
         {/* Image goes here */}
-        <img 
+        <img  
           src="/Portfolio/chunckysquirrel.JPG" 
           alt="Chunky Squirrel" 
           className="card__image w-full h-full object-cover"

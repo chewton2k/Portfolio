@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomePageBottom = () => {
   return (
-    <footer className="w-full text-white py-6 mt-auto">
+    <footer className="w-full text-white py-6 mt-auto pl-8">
       <div className="container mx-auto w-full flex flex-col items-center text-center py-5">
         {/* Contact Section */} 
         <div className="flex flex-wrap items-center space-x-4 md:space-x-10 py-2">

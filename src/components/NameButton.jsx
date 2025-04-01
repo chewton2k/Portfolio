@@ -21,7 +21,7 @@ const CButton = () => {
   if (isMobile) {
     return (
       <div className="absolute left-5 top-5 z-100"> 
-        <a href="#home" className="text-sm font-light cursor-pointer">
+        <a href="#intro" className="text-sm font-light cursor-pointer">
           <button className="mobile-btn">
             <svg
               viewBox="0 0 24 24"
@@ -40,7 +40,7 @@ const CButton = () => {
 
   return (
     <div className="fixed left-5 top-10 z-100"> 
-      <a href="#home" className="text-sm font-light hover:scale-110 duration-500 cursor-pointer">
+      <a href="#intro" className="text-sm font-light hover:scale-110 duration-500 cursor-pointer">
         <button className="Btn">
           <svg
             viewBox="0 0 24 24"

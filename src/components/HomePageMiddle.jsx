@@ -443,10 +443,11 @@ const HomePageMiddle = () => {
   }, [isDragging, draggedBallIndex, offset, textObstacles, isMobile]);
 
   return (
-    <div 
-      className="container h-screen relative flex flex-col justify-center w-6/8 min-h-[50vh] bg-cover bg-center"
-      ref={containerRef}
-    >
+<div 
+  className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-screen flex flex-col justify-center items-center w-full min-h-[50vh] bg-cover bg-center"
+  ref={containerRef}
+>
+
       {/* Only render balls if not on mobile */}
       {!isMobile && balls.map((ball, index) => (
         <div

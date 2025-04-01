@@ -4,7 +4,7 @@ const ExperiencePage = () => {
   return (
     <section
       id="experience"
-      className="min-h-screen px-4 md:px-24 md:ml-16"
+      className="min-h-screen px-4 md:px-24 md:ml-16 pl-8"
     >
 
       <div className="w-6/8" style={{ opacity: 1, transform: "none" }}>
