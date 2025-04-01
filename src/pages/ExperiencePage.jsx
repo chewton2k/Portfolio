@@ -4,18 +4,18 @@ const ExperiencePage = () => {
   return (
     <section
       id="experience"
-      className="min-h-screen px-4 md:px-24 md:ml-16 pl-8"
+      className="w-7/8 min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16"
     >
 
       <div className="w-6/8" style={{ opacity: 1, transform: "none" }}>
-        <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">
+        <h2 className="text-4xl md:text-7xl font-medium max-w-2xl text-white">
           experience.
         </h2>
 
 
         <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
-            <h2 class="text-4xl md:text-5xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 class="text-4xl md:text-5xl font-medium max-w-2xl"></h2>
 
             <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
 
@@ -41,7 +41,7 @@ const ExperiencePage = () => {
 
         <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
-            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 class="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
 
@@ -67,7 +67,7 @@ const ExperiencePage = () => {
 
         <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
-            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 class="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
 
@@ -95,7 +95,7 @@ const ExperiencePage = () => {
 
         <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
-            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 class="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
 
@@ -118,7 +118,7 @@ const ExperiencePage = () => {
 
         <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
-            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 class="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
 

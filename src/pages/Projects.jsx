@@ -2,13 +2,13 @@ import React from "react";
 
 const ProjectsPage = () => {
   return (
-    <section id="projects" className="w-6/8 min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16 pl-8">
+    <section id="projects" className="w-7/8 min-h-screen px-4 md:px-24 py-16 md:py-32 md:ml-16">
       <div className="max-w-5xl" style={{ opacity: 1, transform: "none" }}>
-        <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">projects.</h2>
+        <h2 className="text-4xl md:text-7xl font-medium max-w-2xl text-white">projects.</h2>
 
         <div className="grid md:grid-cols-4 gap-2">
           <div className="md:col-span-2 md:col-start-1">
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 className="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div className="relative w-48 h-40 flex-shrink-0 mb-4"></div>
             <a href="https://github.com/chewton2k/UCLADesign" target="_blank" rel="noopener noreferrer"> 
@@ -23,16 +23,16 @@ const ProjectsPage = () => {
                   integrating queryable search functionality<br/>
                 </p>
                 <p className="text-sm text-gray-500"> 
-                  React.js • MongoDB • Node.js • Express • JS 
+                  React.js • MongoDB • Node.js • Express • JS • TailwindCSS
                 </p>
               </div>
             </a>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-2">
-          <div className="md:col-span-2 md:col-start-3">
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+        <div className="grid md:grid-cols-5 gap-2">
+          <div className="md:col-span-3 md:col-start-3">
+            <h2 className="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div className="relative w-48 h-40 flex-shrink-0 mb-4"></div>
             <a href="https://github.com/chewton2k/ClubScraper" target="_blank" rel="noopener noreferrer"> 
@@ -54,7 +54,7 @@ const ProjectsPage = () => {
 
         <div className="grid md:grid-cols-4 gap-2">
           <div className="md:col-span-2 md:col-start-1">
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 className="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div className="relative w-48 h-40 flex-shrink-0 mb-4"></div>
             <a href="https://github.com/chewton2k/PredictingStocks" target="_blank" rel="noopener noreferrer"> 
@@ -76,9 +76,9 @@ const ProjectsPage = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-2">
-          <div className="md:col-span-2 md:col-start-3">
-            <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+        <div className="grid md:grid-cols-5 gap-2">
+          <div className="md:col-span-3 md:col-start-3">
+            <h2 className="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
             <div className="relative w-48 h-40 flex-shrink-0 mb-4"></div>
             <a href="https://github.com/chewton2k/Office-Group" target="_blank" rel="noopener noreferrer"> 

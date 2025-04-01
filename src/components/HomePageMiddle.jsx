@@ -5,6 +5,7 @@ const HomePageMiddle = () => {
   const NUM_BALLS = 3;
   const BALL_SIZE = 60;
   const BALL_RADIUS = BALL_SIZE / 2;
+  const NAVBAR_WIDTH_PERCENTAGE = 0.125;
   
   const [balls, setBalls] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
@@ -12,6 +13,7 @@ const HomePageMiddle = () => {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [textObstacles, setTextObstacles] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [containerDimensions, setContainerDimensions] = useState({ width: 0, height: 0 });
   
   const containerRef = useRef(null);
   const ballRefs = useRef([]);
@@ -23,45 +25,41 @@ const HomePageMiddle = () => {
   const requestRef = useRef(null);
 
   useEffect(() => {
+    const updateDimensions = () => {
+      if (containerRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect();
+        setContainerDimensions({ width, height });
+      }
+    };
+
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
+
+  useEffect(() => {
     const checkIfMobile = () => {
       const isMobileDevice = window.outerWidth <= 768;
-      
-      // Additional check for touch capability as secondary method
-      const hasTouchCapability = 
-        'ontouchstart' in window || 
-        navigator.maxTouchPoints > 0 || 
-        navigator.msMaxTouchPoints > 0;
-      
-      // Set as mobile if screen is small OR it's a dedicated mobile device with touch
+      const hasTouchCapability = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
       setIsMobile(isMobileDevice || (hasTouchCapability && window.outerWidth <= 1024));
     };
 
-    // Initial check
     checkIfMobile();
-    
-    // Re-check on resize
     window.addEventListener('resize', checkIfMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkIfMobile);
-    };
+    return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Only run the ball physics code if not on mobile
   useEffect(() => {
     const detectTextElements = () => {
       if (!containerRef.current || !headingRef.current || !switchDescRef.current || !terminalRef.current) return;
       
       const containerRect = containerRef.current.getBoundingClientRect();
-      
       const headingRect = headingRef.current.getBoundingClientRect();
       const headingObstacle = {
         left: headingRect.left - containerRect.left,
         top: headingRect.top - containerRect.top,
         right: headingRect.right - containerRect.left,
         bottom: headingRect.bottom - containerRect.top,
-        width: headingRect.width,
-        height: headingRect.height,
         type: 'heading'
       };
       
@@ -71,8 +69,6 @@ const HomePageMiddle = () => {
         top: switchRect.top - containerRect.top,
         right: switchRect.right - containerRect.left,
         bottom: switchRect.bottom - containerRect.top,
-        width: switchRect.width,
-        height: switchRect.height,
         type: 'switch'
       };
       
@@ -82,21 +78,16 @@ const HomePageMiddle = () => {
         top: terminalRect.top - containerRect.top,
         right: terminalRect.right - containerRect.left,
         bottom: terminalRect.bottom - containerRect.top,
-        width: terminalRect.width,
-        height: terminalRect.height,
         type: 'terminal'
       };
       
       setTextObstacles([headingObstacle, switchObstacle, terminalObstacle]);
     };
     
-    // Only run for non-mobile devices
     if (!isMobile) {
       detectTextElements();
       window.addEventListener('resize', detectTextElements);
-      
       const timeoutId = setTimeout(detectTextElements, 500);
-      
       return () => {
         window.removeEventListener('resize', detectTextElements);
         clearTimeout(timeoutId);
@@ -105,10 +96,10 @@ const HomePageMiddle = () => {
   }, [isMobile]);
 
   useEffect(() => {
-    // Skip ball initialization for mobile devices
     if (isMobile || !containerRef.current || textObstacles.length === 0 || balls.length > 0) return;
     
     const { width, height } = containerRef.current.getBoundingClientRect();
+    const navbarWidth = width * NAVBAR_WIDTH_PERCENTAGE;
     
     const initialBalls = [];
     for (let i = 0; i < NUM_BALLS; i++) {
@@ -116,25 +107,20 @@ const HomePageMiddle = () => {
       let newBall;
       
       while (!validPosition) {
-        const x = Math.random() * (width - BALL_SIZE);
+        const x = navbarWidth + Math.random() * (width - navbarWidth - BALL_SIZE);
         const y = Math.random() * (height / 2);
         
         let overlaps = false;
         for (const obstacle of textObstacles) {
           const ballCenterX = x + BALL_RADIUS;
           const ballCenterY = y + BALL_RADIUS;
-          
           const closestX = Math.max(obstacle.left, Math.min(ballCenterX, obstacle.right));
           const closestY = Math.max(obstacle.top, Math.min(ballCenterY, obstacle.bottom));
-          
           const distanceX = ballCenterX - closestX;
           const distanceY = ballCenterY - closestY;
           const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
           
-          if (distance < BALL_RADIUS) {
-            overlaps = true;
-            break;
-          }
+          if (distance < BALL_RADIUS) overlaps = true;
         }
         
         if (!overlaps) {
@@ -147,36 +133,26 @@ const HomePageMiddle = () => {
           };
         }
       }
-      
       initialBalls.push(newBall);
     }
     
     setBalls(initialBalls);
     ballRefs.current = initialBalls.map(() => React.createRef());
-  }, [balls.length, textObstacles, isMobile]);
+  }, [balls.length, textObstacles, isMobile, containerDimensions]);
 
-  // Rest of your component code...
-  // All the handlers and physics functions remain the same,
-  // but they will only run if there are balls in the state
-  
   useEffect(() => {
-    if (isMobile) return; // Skip all physics for mobile
+    if (isMobile) return;
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden' && isDragging) {
-        handleEndDrag();
-      }
+      if (document.visibilityState === 'hidden' && isDragging) handleEndDrag();
     };
 
     const handleWindowBlur = () => {
-      if (isDragging) {
-        handleEndDrag();
-      }
+      if (isDragging) handleEndDrag();
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     window.addEventListener('blur', handleWindowBlur);
-
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('blur', handleWindowBlur);
@@ -187,19 +163,10 @@ const HomePageMiddle = () => {
     if (!ballRefs.current[index]?.current) return;
     
     const ballRect = ballRefs.current[index].current.getBoundingClientRect();
-    setOffset({
-      x: clientX - ballRect.left,
-      y: clientY - ballRect.top,
-    });
-    
+    setOffset({ x: clientX - ballRect.left, y: clientY - ballRect.top });
     setDraggedBallIndex(index);
     setIsDragging(true);
-    positionHistoryRef.current = [{
-      x: clientX,
-      y: clientY,
-      time: performance.now()
-    }];
-    
+    positionHistoryRef.current = [{ x: clientX, y: clientY, time: performance.now() }];
     setBalls(prev => prev.map((ball, i) => 
       i === index ? { ...ball, velocity: { x: 0, y: 0 } } : ball
     ));
@@ -221,8 +188,9 @@ const HomePageMiddle = () => {
     const now = performance.now();
     lastTimeRef.current = now;
     const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+    const navbarWidth = width * NAVBAR_WIDTH_PERCENTAGE;
 
-    const newX = Math.max(0, Math.min(width - BALL_SIZE, clientX - left - offset.x));
+    const newX = Math.max(navbarWidth, Math.min(width - BALL_SIZE, clientX - left - offset.x));
     const newY = Math.max(0, Math.min(height - BALL_SIZE, clientY - top - offset.y));
 
     positionHistoryRef.current.push({ x: clientX, y: clientY, time: now });
@@ -272,16 +240,8 @@ const HomePageMiddle = () => {
       for (let j = i + 1; j < newBalls.length; j++) {
         const ball1 = newBalls[i];
         const ball2 = newBalls[j];
-        
-        const center1 = {
-          x: ball1.position.x + BALL_RADIUS,
-          y: ball1.position.y + BALL_RADIUS
-        };
-        const center2 = {
-          x: ball2.position.x + BALL_RADIUS,
-          y: ball2.position.y + BALL_RADIUS
-        };
-        
+        const center1 = { x: ball1.position.x + BALL_RADIUS, y: ball1.position.y + BALL_RADIUS };
+        const center2 = { x: ball2.position.x + BALL_RADIUS, y: ball2.position.y + BALL_RADIUS };
         const dx = center2.x - center1.x;
         const dy = center2.y - center1.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
@@ -317,7 +277,6 @@ const HomePageMiddle = () => {
         }
       }
     }
-    
     return newBalls;
   };
 
@@ -325,9 +284,7 @@ const HomePageMiddle = () => {
     if (!textObstacles.length) return balls;
     
     return balls.map(ball => {
-      if (isDragging && ball.id === draggedBallIndex) {
-        return ball;
-      }
+      if (isDragging && ball.id === draggedBallIndex) return ball;
       
       const ballCenterX = ball.position.x + BALL_RADIUS;
       const ballCenterY = ball.position.y + BALL_RADIUS;
@@ -336,7 +293,6 @@ const HomePageMiddle = () => {
       for (const obstacle of textObstacles) {
         const closestX = Math.max(obstacle.left, Math.min(ballCenterX, obstacle.right));
         const closestY = Math.max(obstacle.top, Math.min(ballCenterY, obstacle.bottom));
-        
         const distanceX = ballCenterX - closestX;
         const distanceY = ballCenterY - closestY;
         const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
@@ -344,26 +300,22 @@ const HomePageMiddle = () => {
         if (distance < BALL_RADIUS) {
           const nx = distanceX / distance;
           const ny = distanceY / distance;
-          
           const penetration = BALL_RADIUS - distance;
           
           newBall.position.x += nx * penetration;
           newBall.position.y += ny * penetration;
           
           const dot = newBall.velocity.x * nx + newBall.velocity.y * ny;
-          
-          const restitution = 0.7;
+          const restitution = 0.8;
           newBall.velocity.x = newBall.velocity.x - (1 + restitution) * dot * nx;
           newBall.velocity.y = newBall.velocity.y - (1 + restitution) * dot * ny;
         }
       }
-      
       return newBall;
     });
   };
 
   useEffect(() => {
-    // Skip physics for mobile
     if (isMobile) return;
     
     const applyPhysics = (time) => {
@@ -384,9 +336,10 @@ const HomePageMiddle = () => {
           
           if (!containerRef.current) return ball;
           const container = containerRef.current.getBoundingClientRect();
+          const navbarWidth = container.width * NAVBAR_WIDTH_PERCENTAGE;
           
-          if (newX < 0) {
-            newX = 0;
+          if (newX < navbarWidth) {
+            newX = navbarWidth;
             newVelX = -newVelX * 0.7;
           } else if (newX > container.width - BALL_SIZE) {
             newX = container.width - BALL_SIZE;
@@ -411,7 +364,6 @@ const HomePageMiddle = () => {
         
         newBalls = checkBallCollisions(newBalls);
         newBalls = checkTextCollisions(newBalls);
-        
         return newBalls;
       });
 
@@ -424,7 +376,6 @@ const HomePageMiddle = () => {
       e.preventDefault();
     };
 
-    // Only add event listeners if not on mobile
     window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('mouseup', handleEndDrag);
@@ -443,12 +394,10 @@ const HomePageMiddle = () => {
   }, [isDragging, draggedBallIndex, offset, textObstacles, isMobile]);
 
   return (
-<div 
-  className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-screen flex flex-col justify-center items-center w-full min-h-[50vh] bg-cover bg-center"
-  ref={containerRef}
->
-
-      {/* Only render balls if not on mobile */}
+    <div 
+      className="container absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-screen flex flex-col justify-center items-center w-full min-h-[50vh] bg-cover bg-center"
+      ref={containerRef}
+    >
       {!isMobile && balls.map((ball, index) => (
         <div
           key={ball.id}
