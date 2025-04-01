@@ -4,31 +4,30 @@
   --breakpoint-3xl: 120rem;
 }
 
+
 /* default html behavior  */
 html {
   scroll-behavior: smooth;
   background-color: black;
   color:white;
-  width:100%;
+  max-width:100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html, body {
   min-height: 100%;
 }
 
-/* Prevent pull-to-refresh on mobile devices */
-html, body {
-  overscroll-behavior-y: none;
-  width:100%; 
-}
-
 /* Prevent horizontal scrolling */
 html, body {
-  overflow-x: hidden;
   margin: 0;
   padding: 0;
-  width: 100%;
-  position: relative;
+  width: 100vw;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* Make container elements respect viewport width */
@@ -45,33 +44,7 @@ html, body {
   }
 }
 
-/* Touch device specific styles */
-.touch-scrollable {
-  -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
-}
-
-.scrollable {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  height: 100%;
-}
-
-/* Optional: Improve touch targets */
-.touch-device button,
-.touch-device a,
-.touch-device input[type="submit"],
-.touch-device input[type="button"] {
-  min-height: 44px;
-  min-width: 44px;
-}
-
-/* Optional: Add momentum scrolling for iOS */
-.touch-device .pages-container {
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Loading blocks */
+/* Loading blocks */  
 .boxes {
   --size: 32px;
   --duration: 800ms;
@@ -352,8 +325,8 @@ html, body {
 .mobile-btn {
   border: 1px solid white;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;

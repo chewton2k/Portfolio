@@ -444,7 +444,7 @@ const HomePageMiddle = () => {
 
   return (
     <div 
-      className="container h-screen relative flex flex-col justify-center w-full min-h-[50vh] bg-cover bg-center"
+      className="container h-screen relative flex flex-col justify-center w-6/8 min-h-[50vh] bg-cover bg-center"
       ref={containerRef}
     >
       {/* Only render balls if not on mobile */}
@@ -483,7 +483,7 @@ const HomePageMiddle = () => {
           <SwitchDescription/> 
         </div>
         
-        <div className="mt-40 w-full max-w-lg mx-auto" ref={terminalRef}>
+        <div className="mt-40 w-full max-w-lg mx-auto select-none" ref={terminalRef}>
           <aside className="bg-gray-900 text-white p-6 rounded-lg font-mono shadow-lg">
             <div className="flex justify-between items-center">
               <div className="flex space-x-2 group px-1 py-1 cursor-pointer">

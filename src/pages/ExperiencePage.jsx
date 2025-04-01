@@ -7,19 +7,19 @@ const ExperiencePage = () => {
       className="min-h-screen px-4 md:px-24 md:ml-16"
     >
 
-      <div className="max-w-4xl" style={{ opacity: 1, transform: "none" }}>
+      <div className="w-6/8" style={{ opacity: 1, transform: "none" }}>
         <h2 className="text-4xl md:text-7xl font-medium mb-8 max-w-2xl text-white">
           experience.
         </h2>
 
 
-        <div class="grid md:grid-cols-3 gap-2">
+        <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
-            <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
+            <h2 class="text-4xl md:text-5xl font-medium mb-8 max-w-2xl"></h2>
 
             <div class="relative w-48 h-40 flex-shrink-0 mb-4"></div>
 
-            <div class="space-y-4 max-w-2xl">
+            <div class="space-y-4 max-w-2xl"> 
               <p class="font-mono text-sm text-gray-500">
                 Undergraduate Researcher{" "}
               </p>
@@ -39,7 +39,7 @@ const ExperiencePage = () => {
           </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-2">
+        <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
             <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
 
@@ -65,7 +65,7 @@ const ExperiencePage = () => {
           </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-2">
+        <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
             <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
 
@@ -93,7 +93,7 @@ const ExperiencePage = () => {
           </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-2">
+        <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
             <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
 
@@ -116,7 +116,7 @@ const ExperiencePage = () => {
           </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-2">
+        <div class="grid md:grid-cols-4 gap-2">
           <div class="md:col-span-2 md:col-start-2">
             <h2 class="text-4xl md:text-7xl font-medium mb-8 max-w-2xl"></h2>
 

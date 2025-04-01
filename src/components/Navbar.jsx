@@ -55,7 +55,7 @@ const Navbar = () => {
         <nav
           ref={navRef}
           className={`fixed ${
-            isMobile ? 'top-0 right-0 h-screen w-40' : 'left-0 top-0 h-screen w-40'
+            isMobile ? 'top-0 right-0 h-screen' : 'left-0 top-0 h-screen w-1/8'
           } bg-black shadow-xl border-white flex flex-col justify-center items-start py-10 z-40`}
         >
           {/* Navigation Links */}

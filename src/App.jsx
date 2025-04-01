@@ -125,9 +125,9 @@ function App() {
 
       {/* Main Content */}
       {!isLoading && (
-        <div className="flex">
+        <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="ml-40 w-full">
+        <main className="w-full">
           <section id="home" className="pages-container min-h-screen pt-5">
             <HomePage />
           </section>
