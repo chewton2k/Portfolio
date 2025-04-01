@@ -2,19 +2,19 @@ import React from 'react';
 
 const LinkedInButton = () => {
   return (
-<section class="flex justify-center items-center">
+<section className="flex justify-center items-center">
   <button  
-    class="group flex justify-center p-2 rounded-md drop-shadow-xl bg-[#0077b5] from-gray-800 text-white font-semibold transition-all hover:scale-125 duration-200"
+    className="group flex justify-center p-2 rounded-md drop-shadow-xl bg-[#0077b5] from-gray-800 text-white font-semibold transition-all hover:scale-125 duration-200"
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1.1em"
       viewBox="0 0 512 512"
-      stroke-width="0"
+      strokeWidth="0"
       fill="currentColor"
       stroke="currentColor"
-      class="w-5 h-"
+      className="w-5 h-"
     >
       
       <path
