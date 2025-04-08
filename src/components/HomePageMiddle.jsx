@@ -433,7 +433,7 @@ const HomePageMiddle = () => {
           <SwitchDescription/> 
         </div>
         
-        <div className="mt-40 w-full max-w-lg mx-auto select-none" ref={terminalRef}>
+        <div className="mt-40 w-[70%] max-w-lg mx-auto select-none" ref={terminalRef}>
           <aside className="bg-gray-900 text-white p-6 rounded-lg font-mono shadow-lg">
             <div className="flex justify-between items-center">
               <div className="flex space-x-2 group px-1 py-1 cursor-pointer">
