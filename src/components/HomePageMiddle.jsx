@@ -430,7 +430,7 @@ const HomePageMiddle = () => {
           Charlton Shih
         </h1>
         <div ref={switchDescRef} className="select-none text-center"> 
-          <SwitchDescription/> 
+                  {/*           <SwitchDescription/> */ }
         </div>
         
         <div className="mt-40 w-[70%] max-w-lg mx-auto select-none" ref={terminalRef}>
@@ -456,7 +456,7 @@ const HomePageMiddle = () => {
               </p>
               <p className="text-white mb-3">
                 <br />
-                Welcome to my website! I'm a college student interested in software engineering, AI, and cybersecurity.
+                Welcome to my website! I'm a college student interested in software engineering and AI. 
                 <br />
               </p>
               <div className="flex">

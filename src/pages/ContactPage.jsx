@@ -36,7 +36,7 @@ const ContactPage = () => {
                   download="Charlton_Shih_CV.pdf"
                 >
                   {" "}
-                  CV (March 2025)
+                  CV (August 2025)
                 </a>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -41,8 +41,8 @@ const ProjectsPage = () => {
                   Club Scraper
                 </h3>
                 <p className="text-sm text-white">
-                • Python web scraper for gathering information on tech clubs at UCLA from their official student association page
-                • Uses Selenium to automate browser actions and extract relevant data such as club names, emails, Instagram handles, and signatories
+                • Python web scraper for gathering information on tech clubs at UCLA from their official student association page <br/> 
+                • Uses Selenium to automate browser actions and extract relevant data such as club names, emails, Instagram handles, and signatories <br/>
                 </p>
                 <p className="text-sm text-gray-500"> 
                   python • jupyterlab • selenium 
@@ -100,7 +100,29 @@ const ProjectsPage = () => {
         </div>
 
 
+        <div className="grid md:grid-cols-4 gap-2">
+          <div className="md:col-span-2 md:col-start-1">
+            <h2 className="text-4xl md:text-7xl font-medium max-w-2xl"></h2>
 
+            <div className="relative w-48 h-40 flex-shrink-0 mb-4"></div>
+              <div className="space-y-4 max-w-2xl border-1 py-4 px-4 border-white rounded-2xl transition-transform duration-300 hover:scale-105">
+                <h3 className="text-3xl font-light text-white">
+                PillPall
+                </h3>
+                <p className="text-sm text-white">
+• Collaborated with a 16-person team of mechanical, electrical, and UI/UX engineers to build Pill Pall, an automated pill
+dispenser that tracks usage and notifies users of scheduled doses <br/>
+• Developed a full-stack IoT system connecting ESP32 microcontrollers, servo motors, and IR sensors with a web platform
+to enable real-time dispensing and confirmation tracking <br/>
+• Integrated Google Calendar API, OAuth 2.0, and Google Cloud IAM to manage medication schedules with secure
+reminders and event creation <br/> 
+                </p>
+                <p className="text-sm text-gray-500"> 
+                  Typescript • React.js • MongDB • Arduino • Websocket
+                </p>
+              </div>
+          </div>
+        </div>
 
       </div>
     </section>
