@@ -11,7 +11,7 @@ const ExperiencePage = () => {
 
         {/* Block 1 */}
         <div className="flex justify-center">
-          <div className="text-left max-w-2xl w-full">
+          <div className="text-left max-w-xl w-full">
             <div className="relative w-48 h-40 flex-shrink-0 mb-4"></div>
             <div className="space-y-4">
               <p className="font-mono text-sm text-gray-500">Undergraduate Researcher</p>
