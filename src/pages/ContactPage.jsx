@@ -32,8 +32,9 @@ const ContactPage = () => {
                 <br/>
                 <button className="cursor-pointer flex justify-between bg-gray-800 px-3 py-1.5 rounded-full text-white text-sm tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-[200px]">
                 <a
-                  href="/Portfolio/Charlton_Shih_CV.pdf"
-                  download="Charlton_Shih_CV.pdf"
+                  href="https://drive.google.com/file/d/13Aub7P7_4nC1gJxXsDQL08y0Qs89z-5Q/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   {" "}
                   CV (August 2025)
