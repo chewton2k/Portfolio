@@ -7,7 +7,8 @@ import ProjectsPage from "./pages/Projects.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import ExperiencePage from "./pages/ExperiencePage.jsx";
 import PicturePage from "./pages/PicturePage.jsx";
-import ContactPage from "./pages/ContactPage.jsx";
+import ContactPage from "./pages/ContactPage.jsx"
+import PaperPage from "./pages/PaperPage.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -106,6 +107,10 @@ function App() {
 
               <section id="experience" className="pages-container min-h-screen pt-5">
                 <ExperiencePage />
+              </section>
+
+              <section id="research" className="pages-container min-h-screen pt-5">
+                <PaperPage />
               </section>
 
               <section id="projects" className="pages-container min-h-screen pt-5">

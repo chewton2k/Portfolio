@@ -66,7 +66,7 @@ const Navbar = () => {
           } bg-black shadow-xl border-white flex flex-col justify-center items-start py-10 z-40`}
         >
           <div className="flex flex-col items-start space-y-6 pl-5">
-            {['Intro', 'About', 'Experience', 'Projects', 'Pictures', 'Contact'].map((section) => (
+            {['Intro', 'About', 'Experience', 'Research', 'Projects', 'Pictures', 'Contact'].map((section) => (
               <a
                 key={section}
                 href={`#${section.toLowerCase()}`}
