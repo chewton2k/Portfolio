@@ -6,7 +6,7 @@ const PaperPage = () => {
     >
       <div className="w-6/8" style={{ opacity: 1, transform: "none" }}>
         <h2 className="text-4xl md:text-7xl font-medium max-w-2xl text-white">
-          Research.
+          research.
         </h2>
 
         {/* Block 1 */}
