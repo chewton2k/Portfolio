@@ -32,7 +32,7 @@ const ContactPage = () => {
                 <br/>
                 <button className="cursor-pointer flex justify-between bg-gray-800 px-3 py-1.5 rounded-full text-white text-sm tracking-wider shadow-xl hover:bg-gray-900 hover:scale-105 duration-500 hover:ring-1 font-mono w-[200px]">
                 <a
-                  href="/Portfolio/Charlton_Shih_CV.pdf"
+                  href="/Portfolio/Charlton_Shih_Resume.pdf"
                   target="_blank"
                 >
                   {" "}
