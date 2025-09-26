@@ -41,7 +41,7 @@ const ExperiencePage = () => {
                 UCLA Computer Science Department
               </h3>
               <p className="text-sm text-white">
-                Jul 2024 - Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
+                Jul 2024 - Jul 2025 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
               </p>
               <p className="text-sm text-gray-500">
                 • Collaborated with a 10-person team to develop affordable autonomous surgery robots under Prof. Arisaka and Yunbo Wang <br/> 
@@ -61,7 +61,7 @@ const ExperiencePage = () => {
               <p className="font-mono text-sm text-gray-500">Full Stack Developer</p>
               <h3 className="text-3xl font-medium text-white">AdOptimal</h3>
               <p className="text-sm text-white">
-                Dec 2025 - Present &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
+                Dec 2025 - Aug 2025 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Los Angeles, California
               </p>
               <p className="text-sm text-gray-500">
             • Ad-Optimal connects businesses with student organizations, simplifying processes for advertisements and transactions <br/>
